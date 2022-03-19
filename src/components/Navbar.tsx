@@ -1,5 +1,5 @@
 const Navbar = () => (
-  <nav className="navbar navbar-expand navbar-light justify-content-between py-1 flex-shrink-0">
+  <nav className="navbar navbar-expand navbar-light justify-content-between py-1">
     <div className="navbar-brand mx-4">regEx</div>
     <ul className="navbar-nav ml-auto">
       <li className="nav-item">

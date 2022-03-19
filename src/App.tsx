@@ -1,7 +1,7 @@
 import Expression from "./components/Expression";
 import Navbar from "./components/Navbar";
 import Output from "./components/Output";
-import Text from "./components/Text";
+import Input from "./components/Input";
 
 const App = () => {
   return (
@@ -9,7 +9,7 @@ const App = () => {
       <Navbar />
       <div className="st">
         <Expression />
-        <Text />
+        <Input />
         <Output />
       </div>
     </div>

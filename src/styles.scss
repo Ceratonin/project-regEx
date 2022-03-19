@@ -20,8 +20,9 @@ section {
 }
 
 .page {
-  height: 100%;
+  height: calc(100vh - 48px)
 }
+
 .st {
   height: 100%;
   display: flex;

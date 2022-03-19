@@ -1,13 +1,13 @@
 import "./styles.scss";
 
-const Text = () => (
-  <section className="text">
+const Input = () => (
+  <section className="input">
     <div className="form-label">Текст:</div>
     <textarea
-      className="form-control"
+      className="form-control input-text"
       placeholder="Введите текст сюда"
     />
   </section>
 );
 
-export default Text;
+export default Input;

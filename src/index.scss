@@ -20,8 +20,8 @@ body {
 }
 
 .st {
-  height: 100%;
+  height: auto;
   width: auto;
   display: flex;
-  flex-flow: column;
+  flex-direction: column;
 }

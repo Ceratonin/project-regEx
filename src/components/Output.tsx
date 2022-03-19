@@ -4,7 +4,7 @@ const Output = () => (
   <section className="output" style={{ overflowY: "auto" }}>
     <p className="mb-1">Вывод:</p>
     <article className="mb-2" style={{ overflowY: "auto" }}>
-      <p className="lead">
+      <p className="output-text">
         Я родился в Москве в 70-м на краю города Моча рано ударила в голову В 4
         активно ругался матом; в детском саду Девочки впервые показали мне пизду
         Потом школа, вонючая форма, драки, клей Так я становился сильней Воровал
