@@ -3,14 +3,21 @@ import Navbar from "./components/Navbar";
 import Output from "./components/Output";
 import Input from "./components/Input";
 
+interface IInputRender {
+  render: JSX.Element;
+  value: string;
+}
+
 const App = () => {
+  const { render, value }: IInputRender = Input();
+
   return (
     <div className="page">
       <Navbar />
       <div className="st">
         <Expression />
-        <Input />
-        <Output />
+        {render}
+        <Output text={value} />
       </div>
     </div>
   );
