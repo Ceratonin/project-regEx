@@ -2,19 +2,19 @@ import React, { useState } from "react";
 import "./styles.scss";
 
 const Input = () => {
-  const [value, setValue] = useState("");
+  const [inputText, setInputText] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) =>
-    setValue(e.target.value);
+    setInputText(e.target.value);
 
   return {
-    value,
-    render: (
+    inputText,
+    renderInputText: (
       <section className="input">
         <div className="form-label">Текст:</div>
         <textarea
           id="style-1"
-          value={value}
+          value={inputText}
           onChange={handleChange}
           className="form-control input-text"
           placeholder="Введите текст сюда"
