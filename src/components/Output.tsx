@@ -1,10 +1,13 @@
 import "./styles.scss";
+import "./outputStyles.scss";
 
-interface IText {
-  text: string;
-}
+const Output = ({ arrOfMatches, text }: any) => {
+  arrOfMatches.forEach((regArr: any) => {
+    const [reg, lastIndex] = regArr;
+    const word = text.substring(reg.index, lastIndex);
+    console.log(word, reg.index, lastIndex);
+  });
 
-const Output = ({ text }: IText) => {
   return (
     <section className="output">
       <p className="mb-1">Вывод:</p>

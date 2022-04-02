@@ -17,19 +17,13 @@ const App = () => {
   const { renderInputText, inputText }: IRenderII = Input();
   const { renderExpression, reg }: IRenderE = Expression();
 
-  let regMatch
-  let regGroup 
-  let regIndex
-  let regInput
-  let regLength
-  let regArr
+  let regArr: RegExpExecArray | null | RegExpExecArray[] = [];
+  const arrOfRegs = [];
 
   if (reg !== null && String(reg) !== "/(?:)/g") {
     // eslint-disable-next-line
-    while (regArr = reg.exec(inputText)) {
-      [regMatch, regGroup, regIndex, regInput, regLength] = regArr
-      console.log(regArr)
-      console.log(reg.lastIndex)
+    while ((regArr = reg.exec(inputText))) {
+      arrOfRegs.push([regArr, reg.lastIndex]);
     }
   }
   return (
@@ -38,7 +32,7 @@ const App = () => {
       <div className="st">
         {renderExpression}
         {renderInputText}
-        {inputText ? <Output text={reg.test(inputText).toString()} /> : <></>}
+        {inputText ? <Output arrOfMatches={arrOfRegs} text={inputText} /> : <></>}
       </div>
     </div>
   );
