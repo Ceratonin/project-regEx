@@ -17,12 +17,19 @@ const App = () => {
   const { renderInputText, inputText }: IRenderII = Input();
   const { renderExpression, reg }: IRenderE = Expression();
 
-  const regItr = inputText.matchAll(reg);
+  let regMatch
+  let regGroup 
+  let regIndex
+  let regInput
+  let regLength
+  let regArr
 
   if (reg !== null && String(reg) !== "/(?:)/g") {
     // eslint-disable-next-line
-    for (const regArr of regItr) {
-      console.log(regArr[0]);
+    while (regArr = reg.exec(inputText)) {
+      [regMatch, regGroup, regIndex, regInput, regLength] = regArr
+      console.log(regArr)
+      console.log(reg.lastIndex)
     }
   }
   return (
