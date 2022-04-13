@@ -2,20 +2,30 @@ import React, { useEffect, useState } from "react";
 import "./styles.scss";
 
 const Expression = () => {
-  const [value, setValue] = useState("/");
+  const [inputReg, setInputReg] = useState("/");
+
+  const invalidInputReg = new RegExp(/[-[\]{}()*+?.,\\^$|#\s]/, "g");
+
+  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setInputReg(e.target.value.replace(invalidInputReg, "\\$&"));
+  // };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+    setInputReg(e.target.value);
   };
 
-  useEffect(() => {
-    if (value == "") setValue("/");
-  }, [value]);
 
-  const reg = new RegExp(value, "g");
+  const regExp = new RegExp(inputReg, "g");
+
+  useEffect(() => {
+    if (inputReg === "") {
+      setInputReg("/");
+    }
+  }, [inputReg]);
 
   return {
-    reg,
+    regExp,
+    inputReg,
     renderExpression: (
       <section className="expression">
         <div className="input-group">
