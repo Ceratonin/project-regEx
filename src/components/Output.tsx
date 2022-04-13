@@ -1,13 +1,8 @@
 import "./styles.scss";
 import "./outputStyles.scss";
-import { useEffect } from "react";
 
-const Output = ({ arrOfMatches, text, regExp, inputReg }: any) => {
-  // let word
-  // arrOfMatches.forEach((regArr: any) => {
-  //   const [reg, lastIndex] = regArr;
-  //   word = text.substring(reg.index, lastIndex);
-  // });
+const Output = ({ text, regExp, inputReg }: any) => {
+
 
   let parts = Array(text);
 
@@ -16,24 +11,6 @@ const Output = ({ arrOfMatches, text, regExp, inputReg }: any) => {
   } catch{
     console.log("ошипка")
   }
-
-  console.log(parts)
-  console.log(regExp, inputReg);
-
-  // // try {
-  //   if (inputReg !== "") {
-  //     parts = text.split(new RegExp(`(${inputReg})`));
-  //   } else {
-  //     parts = Array(text);
-  //   }
-  // // } catch (err) {
-  // //   console.log(err);
-  // // }
-
-
-  // useEffect(() => {
-
-  // }, [regExp])
 
   return (
     <section className="output">

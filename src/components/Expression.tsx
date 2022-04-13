@@ -4,12 +4,6 @@ import "./styles.scss";
 const Expression = () => {
   const [inputReg, setInputReg] = useState("/");
 
-  const invalidInputReg = new RegExp(/[-[\]{}()*+?.,\\^$|#\s]/, "g");
-
-  // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setInputReg(e.target.value.replace(invalidInputReg, "\\$&"));
-  // };
-
   let handleChange;
 
   if (inputReg !== "") {
@@ -19,16 +13,6 @@ const Expression = () => {
   } else {
     setInputReg("/");
   }
-
-  // console.log("useEffect");
-  // try {
-  //   RegExp(inputReg, "g");
-  //   console.log("проверяем", inputReg);
-  // } catch (err) {
-  //   console.log(err, "Неправильный", regExpCheck);
-  //   setRegExpCheck(false);
-  //   console.log("regExpCheck", regExpCheck);
-  // }
 
   // Проверка правильности введеного RegExp, например /(/ выдаст ошибку в консоль и крашнет сайт,
   // для того, чтобы этого не происходило, используется метод try...catch, внутри которого
@@ -42,7 +26,6 @@ const Expression = () => {
         return false;
       }
     })();
-    // eslint-disable-next-line
   };
 
   let regExp = new RegExp("/", "");

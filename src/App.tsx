@@ -18,16 +18,6 @@ const App = () => {
   const { renderInputText, inputText }: IRenderII = Input();
   const { renderExpression, regExp, inputReg }: IRenderE = Expression();
 
-  // let regArr: RegExpExecArray | null | RegExpExecArray[] = [];
-  // const arrOfRegs = [];
-
-  // if (regExp !== null && String(regExp) !== "/(?:)/g" && inputReg !== "") {
-  //   // eslint-disable-next-line
-  //   while ((regArr = regExp.exec(inputText))) {
-  //     arrOfRegs.push([regArr, regExp.lastIndex]);
-  //   }
-  // }
-
   return (
     <div className="page">
       <Navbar />
