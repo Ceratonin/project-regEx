@@ -9,15 +9,27 @@ const Output = ({ arrOfMatches, text, regExp, inputReg }: any) => {
   //   word = text.substring(reg.index, lastIndex);
   // });
 
-  let parts;
+  let parts = Array(text);
 
-  if (inputReg !== "") {
-    parts = text.split(new RegExp(`(${inputReg})`));
-  } else {
-    parts = Array(text);
+  try{
+  parts = text.split(new RegExp(`(${inputReg})`, "g"));
+  } catch{
+    console.log("ошипка")
   }
 
+  console.log(parts)
   console.log(regExp, inputReg);
+
+  // // try {
+  //   if (inputReg !== "") {
+  //     parts = text.split(new RegExp(`(${inputReg})`));
+  //   } else {
+  //     parts = Array(text);
+  //   }
+  // // } catch (err) {
+  // //   console.log(err);
+  // // }
+
 
   // useEffect(() => {
 
@@ -36,7 +48,7 @@ const Output = ({ arrOfMatches, text, regExp, inputReg }: any) => {
               </span>
             ) : (
               // eslint-disable-next-line
-              <span key={part + i}>{part}</span>
+              <span key={part + i}>{}</span>
             );
           })}
         </p>

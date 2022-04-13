@@ -10,7 +10,7 @@ interface IRenderII {
 
 interface IRenderE {
   renderExpression: JSX.Element;
-  regExp: RegExp;
+  regExp: RegExp | undefined;
   inputReg: string;
 }
 
@@ -18,23 +18,32 @@ const App = () => {
   const { renderInputText, inputText }: IRenderII = Input();
   const { renderExpression, regExp, inputReg }: IRenderE = Expression();
 
-  let regArr: RegExpExecArray | null | RegExpExecArray[] = [];
-  const arrOfRegs = [];
+  // let regArr: RegExpExecArray | null | RegExpExecArray[] = [];
+  // const arrOfRegs = [];
 
-  if (regExp !== null && String(regExp) !== "/(?:)/g" && inputReg !== "") {
-    // eslint-disable-next-line
-    while ((regArr = regExp.exec(inputText))) {
-      arrOfRegs.push([regArr, regExp.lastIndex]);
-    }
-  }
-  
+  // if (regExp !== null && String(regExp) !== "/(?:)/g" && inputReg !== "") {
+  //   // eslint-disable-next-line
+  //   while ((regArr = regExp.exec(inputText))) {
+  //     arrOfRegs.push([regArr, regExp.lastIndex]);
+  //   }
+  // }
+
   return (
     <div className="page">
       <Navbar />
       <div className="st">
         {renderExpression}
         {renderInputText}
-        {inputText ? <Output regExp={regExp} arrOfMatches={arrOfRegs} text={inputText} inputReg={inputReg} /> : <></>}
+        {inputText ? (
+          <Output
+            regExp={regExp}
+            arrOfMatches={regExp}
+            text={inputText}
+            inputReg={inputReg}
+          />
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

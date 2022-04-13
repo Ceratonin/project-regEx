@@ -10,12 +10,46 @@ const Expression = () => {
   //   setInputReg(e.target.value.replace(invalidInputReg, "\\$&"));
   // };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputReg(e.target.value);
+  let handleChange;
+
+  if (inputReg !== "") {
+    handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setInputReg(e.target.value);
+    };
+  } else {
+    setInputReg("/");
+  }
+
+  // console.log("useEffect");
+  // try {
+  //   RegExp(inputReg, "g");
+  //   console.log("проверяем", inputReg);
+  // } catch (err) {
+  //   console.log(err, "Неправильный", regExpCheck);
+  //   setRegExpCheck(false);
+  //   console.log("regExpCheck", regExpCheck);
+  // }
+
+  // Проверка правильности введеного RegExp, например /(/ выдаст ошибку в консоль и крашнет сайт,
+  // для того, чтобы этого не происходило, используется метод try...catch, внутри которого
+  // находится IIFE функция - функция которая вызывается сразу после своего определения
+  const isRegExp = (value: string | RegExp) => {
+    return (() => {
+      try {
+        RegExp(value);
+        return true;
+      } catch {
+        return false;
+      }
+    })();
+    // eslint-disable-next-line
   };
 
+  let regExp = new RegExp("/", "");
 
-  const regExp = new RegExp(inputReg, "g");
+  if (isRegExp(inputReg)) {
+    regExp = new RegExp(inputReg, "g");
+  }
 
   useEffect(() => {
     if (inputReg === "") {
