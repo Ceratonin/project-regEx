@@ -8,7 +8,7 @@ const Output = ({ text, regExp, inputReg }: any) => {
 
   try{
   parts = text.split(new RegExp(`(${inputReg})`, "g"));
-  } catch{
+  } catch {
     console.log("ошипка")
   }
 
