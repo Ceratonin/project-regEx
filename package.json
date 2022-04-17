@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.0.1",
+    "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^14.1.0",
     "@types/bootstrap": "^5.1.9",
     "babel": "^6.23.0",
@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining": "^7.16.7",
-    "@types/react": "^18.0.3",
+    "@types/react": "^18.0.5",
     "@types/react-router-dom": "^5.3.3",
     "eslint": "^8.13.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -54,7 +54,7 @@
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.4.0",
     "husky": "^7.0.4",
-    "lint-staged": "^12.3.7",
+    "lint-staged": "^12.3.8",
     "prettier": "^2.6.2"
   }
 }

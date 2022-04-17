@@ -69,6 +69,7 @@
     "no-undef":"off",
     "react/function-component-definition": "off",
     "prefer-regex-literals": "off",
-    "react/jsx-no-useless-fragment": "off"
+    "react/jsx-no-useless-fragment": "off",
+    "no-param-reassign": 1
   }
 }
