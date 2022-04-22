@@ -70,6 +70,8 @@
     "react/function-component-definition": "off",
     "prefer-regex-literals": "off",
     "react/jsx-no-useless-fragment": "off",
-    "no-param-reassign": 1
+    "no-param-reassign": 1,
+    "jsx-a11y/anchor-is-valid": 1, 
+    "react/no-array-index-key": 1
   }
 }
