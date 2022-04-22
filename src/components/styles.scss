@@ -5,29 +5,54 @@ section {
   flex-direction: column;
   padding: 1.5rem 3rem 0rem 3rem;
   flex: 1 1 0%;
+
   > article {
     padding: 0.5rem 1rem;
     background-color: rgb(247, 239, 239);
     border-radius: 0.3rem;
     overflow-y: auto;
   }
+
   > textarea {
     height: 100%;
   }
+
   &.expression {
     flex: 0 1 3.4em;
+    .btn-info {
+      background-color: rgb(7, 185, 221);
+      color: white;
+    }
   }
+
   &.output {
     padding-bottom: 1rem;
     overflow-y: auto;
   }
+
   .input-text {
     font-family: "Roboto", "sans-serif";
   }
+
   .output-text {
     font-family: "Roboto", "sans-serif";
     white-space: pre-wrap;
     margin: 0;
+  }
+
+  .dropdown-menu {
+    min-width: 4rem;
+    padding: 0.5rem;
+
+    .form-check .form-check-input,
+    .form-check-label {
+      cursor: pointer;
+    }
+
+    .form-check-label {
+      width: 100%;
+      user-select: none;
+    }
   }
 }
 

@@ -1,4 +1,4 @@
-import "./outputStyles.scss";
+import "./highlightStyles.scss";
 
 interface IHighlight {
   children: string;
@@ -38,10 +38,11 @@ const Highlight = ({ children: text, regExp, inputReg }: IHighlight) => {
 // В редьюсере есть проверкан на undefined, т.к. при создании 
 // Внутреннего массива инпутов, я отнимаю -1 индекс от lastIndex
   const result = indexes
-    .reduce((str: any, [start, end]: any) => {
-      str[start] = `<span class="color-1">${
+    .reduce((str: any, [start, end]: Array<number>) => {
+      str[start] = `<span class="color-output-1">${
         str[start] !== undefined ? str[start] : ""
       }`;
+      console.log(str[start])
       str[end] = `${str[end] !== undefined ? str[end] : ""}</span>`;
 
       return str;
