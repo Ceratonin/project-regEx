@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Expression from "./components/Expression";
 import Navbar from "./components/Navbar";
 import Output from "./components/Output";
@@ -19,22 +20,27 @@ const App = () => {
   const { renderInputText, inputText }: IRenderII = Input();
   const { renderExpression, regExp, inputReg }: IRenderE = Expression();
 
+  const [sidebarState, setSidebarState] = useState(false);
+
   return (
     <div className="page">
-      <Navbar />
+      <Navbar sidebarState={sidebarState} setSidebarState={setSidebarState} />
       <div className="st">
-        {renderExpression}
-        {renderInputText}
-        {inputText ? (
-          <Output
-            regExp={regExp}
-            arrOfMatches={regExp}
-            text={inputText}
-            inputReg={inputReg}
-          />
-        ) : (
-          <></>
-        )}
+        <Sidebar sidebarState={sidebarState} />
+        <div className="outSide">
+          {renderExpression}
+          {renderInputText}
+          {inputText ? (
+            <Output
+              regExp={regExp}
+              arrOfMatches={regExp}
+              text={inputText}
+              inputReg={inputReg}
+            />
+          ) : (
+            <></>
+          )}
+        </div>
       </div>
     </div>
   );

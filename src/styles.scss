@@ -7,6 +7,10 @@ section {
   margin: 0;
 }
 
+body {
+  overflow: hidden;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -15,16 +19,23 @@ section {
   box-sizing: border-box;
 }
 
-#root {
+:root {
+  display: grid;
   height: 100%;
 }
 
 .page {
-  height: calc(100vh - 48px)
+  height: calc(100vh - 48px);
 }
 
-.st {
+.st,
+.outSide {
   height: 100%;
   display: flex;
   flex-flow: column;
+  overflow: hidden;
+}
+
+.outSide{
+  flex-grow: 1;
 }
