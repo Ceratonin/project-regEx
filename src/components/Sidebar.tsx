@@ -10,17 +10,20 @@ const Sidebar = ({ sidebarState }: TSidebarState) => {
   return (
     <div id="sidebar" className={sidebarCheck}>
       <div className={`sidebar ${sidebarCheck}`}>
-
         <div className="sidebar-header">
           <span className="sidebar-header-title">Регулярочки</span>
         </div>
+        <hr />
 
         <div className="sidebar-content">
-          <div className="sidebar-content-match">
+          <div className="sidebar-content-block first">
             <span>Совпадения</span>
+            <div className="sidebar-content-match"></div>
           </div>
-          <div className="sidebar-content-explanation">
+
+          <div className="sidebar-content-block">
             <span>Объяснение</span>
+            <div className="sidebar-content-explanation"></div>
           </div>
         </div>
       </div>

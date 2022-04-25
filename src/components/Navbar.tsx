@@ -13,7 +13,7 @@ const Navbar = ({ setSidebarState, sidebarState }: ISidebarState) => {
 
   return (
     <nav className="navbar navbar-expand navbar-light justify-content-between py-1">
-      <div className="navbar-brand mx-5">regEx</div>
+      <div className="navbar-brand mx-5">regExp</div>
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
           <a className="" href="https://t.me/Nenzoidys">

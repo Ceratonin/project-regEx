@@ -5,55 +5,64 @@ section {
   flex-direction: column;
   padding: 1.5rem 3rem 0rem 3rem;
   flex: 1 1 0%;
-
+  
   > article {
     padding: 0.5rem 1rem;
     background-color: rgb(247, 239, 239);
     border-radius: 0.3rem;
     overflow-y: auto;
+    box-shadow: -2px 2px 8px rgb(0 0 0 / 20%);
   }
-
+  
   > textarea {
     height: 100%;
+    box-shadow: -2px 2px 8px rgb(0 0 0 / 20%);
   }
-
+  
   &.expression {
     flex: 0 1 3.4em;
-    z-index: -1;
-
+    
     .btn-info {
       background-color: rgb(7, 185, 221);
       color: white;
+      box-shadow: -2px 2px 8px rgb(0 0 0 / 10%);
     }
   }
-
+  
   &.output {
     padding-bottom: 1rem;
     overflow-y: auto;
   }
-
+  
   .input-text {
     font-family: "Roboto", "sans-serif";
   }
-
+  
   .output-text {
     font-family: "Roboto", "sans-serif";
     white-space: pre-wrap;
     margin: 0;
   }
+  
+  .input-group {
+    z-index: 0;
+    box-shadow: -2px 2px 8px rgb(0 0 0 / 20%);
+  }
 
-  .dropdown-menu {
-    min-width: 4rem;
-    padding: 0.5rem;
+  button {
+    .dropdown-menu {
+      min-width: 4rem;
+      padding: 0.5rem;
 
-    .form-check .form-check-input,
-    .form-check-label {
-      cursor: pointer;
-    }
+      .form-check .form-check-input,
+      .form-check-label {
+        cursor: pointer;
+      }
 
-    .form-check-label {
-      width: 100%;
-      user-select: none;
+      .form-check-label {
+        width: 100%;
+        user-select: none;
+      }
     }
   }
 }
