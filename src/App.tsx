@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./styles.scss";
 import Expression from "./components/Expression";
 import Navbar from "./components/Navbar";
 import Output from "./components/Output";
@@ -26,7 +27,6 @@ const App = () => {
     <div className="page">
       <Navbar sidebarState={sidebarState} setSidebarState={setSidebarState} />
       <div className="st">
-        <Sidebar sidebarState={sidebarState} />
         <div className="outSide">
           {renderExpression}
           {renderInputText}
@@ -41,6 +41,7 @@ const App = () => {
             <></>
           )}
         </div>
+          <Sidebar sidebarState={sidebarState} />
       </div>
     </div>
   );
