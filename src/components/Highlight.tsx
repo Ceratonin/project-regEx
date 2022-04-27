@@ -1,4 +1,4 @@
-import "./highlightStyles.scss";
+import "../styles/highlightStyles.scss";
 
 interface IHighlight {
   children: string;

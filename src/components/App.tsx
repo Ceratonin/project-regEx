@@ -1,7 +1,7 @@
-import Expression from "./components/Expression";
-import Navbar from "./components/Navbar";
-import Output from "./components/Output";
-import Input from "./components/Input";
+import Expression from "./Expression";
+import Navbar from "./Navbar";
+import Output from "./Output";
+import Input from "./Input";
 
 interface IRenderII {
   renderInputText: JSX.Element;
