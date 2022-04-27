@@ -5,7 +5,7 @@ section {
   flex-direction: column;
   padding: 1.5rem 3rem 0rem 3rem;
   flex: 1 1 0%;
-  
+
   > article {
     padding: 0.5rem 1rem;
     background-color: rgb(247, 239, 239);
@@ -13,37 +13,41 @@ section {
     overflow-y: auto;
     box-shadow: -2px 2px 8px rgb(0 0 0 / 20%);
   }
-  
+
   > textarea {
     height: 100%;
     box-shadow: -2px 2px 8px rgb(0 0 0 / 20%);
   }
-  
+
   &.expression {
     flex: 0 1 3.4em;
-    
+
     .btn-info {
       background-color: rgb(7, 185, 221);
       color: white;
       box-shadow: -2px 2px 8px rgb(0 0 0 / 10%);
     }
   }
-  
+
   &.output {
     padding-bottom: 1rem;
     overflow-y: auto;
+
+    .output-block {
+      height: 100%;
+      border: 0.1px solid lightgray;
+      .output-text {
+        font-family: "Roboto", "sans-serif";
+        white-space: pre-wrap;
+        margin: 0;
+      }
+    }
   }
-  
+
   .input-text {
     font-family: "Roboto", "sans-serif";
   }
-  
-  .output-text {
-    font-family: "Roboto", "sans-serif";
-    white-space: pre-wrap;
-    margin: 0;
-  }
-  
+
   .input-group {
     z-index: 0;
     box-shadow: -2px 2px 8px rgb(0 0 0 / 20%);
@@ -76,9 +80,13 @@ section {
   }
 }
 
-.form-control:focus {
-  box-shadow: none;
+.form-control {
+  &:focus {
+    border-color: rgb(13 110 253 / 50%) !important;
+    box-shadow: -2px 0px 8px rgb(13 110 253 / 50%) !important;
+  }
 }
+$input-focus-box-shadow: none;
 
 //=======================Scroll-bar=======================//
 

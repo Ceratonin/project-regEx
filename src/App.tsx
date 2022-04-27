@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { RegExpContext } from "./components/contexts/RegExpContext";
+import { InputTextContext } from "./components/contexts/InputTextContext";
+import GetIndex from "./components/GetIndex";
 import "./styles.scss";
 import Expression from "./components/Expression";
 import Navbar from "./components/Navbar";
@@ -14,36 +17,39 @@ interface IRenderII {
 interface IRenderE {
   renderExpression: JSX.Element;
   regExp: RegExp | undefined;
-  inputReg: string;
 }
 
 const App = () => {
   const { renderInputText, inputText }: IRenderII = Input();
-  const { renderExpression, regExp, inputReg }: IRenderE = Expression();
+  const { renderExpression, regExp }: IRenderE = Expression();
 
   const [sidebarState, setSidebarState] = useState(false);
 
+  let indexArray;
+
+  if (GetIndex(inputText, regExp).length !== 0) {
+    indexArray = GetIndex(inputText, regExp);
+  }
+
   return (
-    <div className="page">
-      <Navbar sidebarState={sidebarState} setSidebarState={setSidebarState} />
-      <div className="st">
-        <div className="outSide">
-          {renderExpression}
-          {renderInputText}
-          {inputText ? (
-            <Output
-              regExp={regExp}
-              arrOfMatches={regExp}
-              text={inputText}
-              inputReg={inputReg}
-            />
-          ) : (
-            <></>
-          )}
+    <RegExpContext.Provider value={indexArray}>
+      <InputTextContext.Provider value={inputText}>
+        <div className="page">
+          <Navbar
+            sidebarState={sidebarState}
+            setSidebarState={setSidebarState}
+          />
+          <div className="st">
+            <div className="outSide">
+              {renderExpression}
+              {renderInputText}
+              <Output />
+            </div>
+            <Sidebar sidebarState={sidebarState} />
+          </div>
         </div>
-          <Sidebar sidebarState={sidebarState} />
-      </div>
-    </div>
+      </InputTextContext.Provider>
+    </RegExpContext.Provider>
   );
 };
 
