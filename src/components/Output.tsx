@@ -1,4 +1,4 @@
-import "./styles.scss";
+import "../styles/styles.scss";
 import Highlight from "./Highlight";
 
 const Output = ({ text, regExp, inputReg }: any) => {
