@@ -1,12 +1,7 @@
 import "./styles.scss";
-
-interface ISidebarState {
-  setSidebarState: Function;
-  sidebarState: boolean;
-}
+import { ISidebarState } from "../utils/types";
 
 const Navbar = ({ setSidebarState, sidebarState }: ISidebarState) => {
-  
   const handleClick = () => {
     setSidebarState(!sidebarState);
   };

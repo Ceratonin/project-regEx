@@ -1,23 +1,14 @@
 import { useState } from "react";
-import { RegExpContext } from "./components/contexts/RegExpContext";
-import { InputTextContext } from "./components/contexts/InputTextContext";
-import GetIndex from "./components/GetIndex";
+import RegExpContext from "./contexts/RegExpContext";
+import InputTextContext from "./contexts/InputTextContext";
+import GetMatchesInfo from "./components/GetMatchesInfo";
 import "./styles.scss";
 import Expression from "./components/Expression";
 import Navbar from "./components/Navbar";
 import Output from "./components/Output";
 import Input from "./components/Input";
 import Sidebar from "./components/Sidebar";
-
-interface IRenderII {
-  renderInputText: JSX.Element;
-  inputText: string;
-}
-
-interface IRenderE {
-  renderExpression: JSX.Element;
-  regExp: RegExp | undefined;
-}
+import { IRenderII, IRenderE } from "./utils/types";
 
 const App = () => {
   const { renderInputText, inputText }: IRenderII = Input();
@@ -25,14 +16,10 @@ const App = () => {
 
   const [sidebarState, setSidebarState] = useState(false);
 
-  let indexArray;
-
-  if (GetIndex(inputText, regExp).length !== 0) {
-    indexArray = GetIndex(inputText, regExp);
-  }
+  const matchInfoObj = GetMatchesInfo(inputText, regExp);
 
   return (
-    <RegExpContext.Provider value={indexArray}>
+    <RegExpContext.Provider value={matchInfoObj}>
       <InputTextContext.Provider value={inputText}>
         <div className="page">
           <Navbar

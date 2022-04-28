@@ -1,10 +1,7 @@
 import "./Sidebar.scss";
+import SidebarContent, { useMatchContent } from "./SidebarContent";
 
-interface TSidebarState {
-  sidebarState: boolean;
-}
-
-const Sidebar = ({ sidebarState }: TSidebarState) => {
+const Sidebar = ({ sidebarState }: { sidebarState: boolean }) => {
   const sidebarCheck = sidebarState ? "open" : "close";
 
   return (
@@ -18,12 +15,18 @@ const Sidebar = ({ sidebarState }: TSidebarState) => {
         <div className="sidebar-content">
           <div className="sidebar-content-block first">
             <span>Совпадения</span>
-            <div className="sidebar-content-match"></div>
+            <div className="sidebar-content-area">
+              <span className="sidebar-content-match-amount">
+                {useMatchContent()}
+              </span>
+              <hr />
+              <div>da</div>
+            </div>
           </div>
 
           <div className="sidebar-content-block">
             <span>Объяснение</span>
-            <div className="sidebar-content-explanation"></div>
+            <div className="sidebar-content-area"></div>
           </div>
         </div>
       </div>
