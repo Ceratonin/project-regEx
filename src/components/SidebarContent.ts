@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import RegExpContext from "../contexts/RegExpContext";
 
 const SidebarContent = () => {
@@ -36,5 +36,9 @@ export const useMatchContent = () => {
   }
   return "Совпадений не найдено";
 };
+
+export const useMatchArray = () => {
+
+}
 
 export default SidebarContent;

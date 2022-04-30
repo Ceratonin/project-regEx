@@ -11,8 +11,11 @@ const flags = [
   { fullName: "unicode", char: "u", charID: 0 },
   { fullName: "sticky", char: "y", charID: 5 },
 ];
+
+const initialRegExp = `([A-Z])\\w+`;
+
 const Expression = () => {
-  const [inputReg, setInputReg] = useState("/");
+  const [inputReg, setInputReg] = useState(initialRegExp);
   const [checkedState, setCheckedState] = useState(
     new Array(6).fill(true).fill(false, 1)
   );
@@ -92,6 +95,7 @@ const Expression = () => {
           </span>
 
           <input
+            defaultValue={initialRegExp}
             onChange={handleChange}
             type="text"
             className="form-control"
@@ -115,7 +119,7 @@ const Expression = () => {
           >
             {flags.map(({ fullName, char, charID }, id) => {
               return (
-                <li key={id}>
+                <li key={id} className="dropdown-content">
                   <div className="form-check">
                     <input
                       type="checkbox"
