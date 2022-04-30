@@ -15,6 +15,7 @@ const flags = [
 const initialRegExp = `([A-Z])\\w+`;
 
 const Expression = () => {
+  // const [inputReg, setInputReg] = useState("/");
   const [inputReg, setInputReg] = useState(initialRegExp);
   const [checkedState, setCheckedState] = useState(
     new Array(6).fill(true).fill(false, 1)
@@ -95,7 +96,7 @@ const Expression = () => {
           </span>
 
           <input
-            defaultValue={initialRegExp}
+           defaultValue={initialRegExp}    // <---------------------------- HERE
             onChange={handleChange}
             type="text"
             className="form-control"

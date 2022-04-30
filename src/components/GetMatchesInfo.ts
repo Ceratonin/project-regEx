@@ -39,7 +39,6 @@ const GetMatchesInfo = (text: string, regExp: RegExp) => {
       // один массив - capWrap в который записываются скобочные группы
     } else {
       matchesArray = [...text.matchAll(regExp)];
-      console.log(matchesArray)
       matchesArray.forEach((match, i) => {
         regExp.exec(text);
         if (match) {

@@ -6,6 +6,7 @@ export interface IRenderII {
 export interface IRenderE {
   renderExpression: JSX.Element;
   regExp: RegExp | undefined;
+  inputReg: string;
 }
 
 export interface IIndexes {

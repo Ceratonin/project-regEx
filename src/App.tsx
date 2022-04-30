@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import RegExpContext from "./contexts/RegExpContext";
 import InputTextContext from "./contexts/InputTextContext";
 import GetMatchesInfo from "./components/GetMatchesInfo";
@@ -12,11 +12,16 @@ import { IRenderII, IRenderE } from "./utils/types";
 
 const App = () => {
   const { renderInputText, inputText }: IRenderII = Input();
-  const { renderExpression, regExp }: IRenderE = Expression();
+  const { renderExpression, regExp, inputReg }: IRenderE = Expression();
 
   const [sidebarState, setSidebarState] = useState(false);
 
-  const matchInfoObj = GetMatchesInfo(inputText, regExp);
+  const matchInfoObj = useMemo(
+    () => GetMatchesInfo(inputText, regExp),
+    [inputText, inputReg]
+  );
+
+  // const matchInfoObj = GetMatchesInfo(inputText, regExp)
 
   return (
     <RegExpContext.Provider value={matchInfoObj}>

@@ -28,7 +28,11 @@ const Sidebar = ({ sidebarState }: { sidebarState: boolean }) => {
               <ul className="list-group py-1">
                 {captures.map((value, index) => {
                   return (
-                    <li className="list-group-item my-1" key={index}>
+                    <li
+                      className="list-group-item my-1"
+                      id="style-1"
+                      key={index}
+                    >
                       {value.map((group, id) => {
                         let groupName = "";
                         if (id === 0) groupName = `Совпадение-${index + 1}`;

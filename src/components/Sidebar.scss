@@ -18,6 +18,7 @@ $anim-time: 0.4s;
     background-color: #b8e1ff;
     transition: transform $anim-time;
     height: 100%;
+    overflow-x: hidden;
 
     @media (orientation: portrait) {
       width: $portrait-width;
@@ -57,7 +58,9 @@ $anim-time: 0.4s;
         display: flex;
         flex-direction: column;
         height: 50%;
-        margin: 0 1rem;
+        // margin: 0 1rem;
+        padding: 0 1rem;
+        width: 100%;
 
         &.first {
           margin-top: 1rem;
@@ -73,11 +76,14 @@ $anim-time: 0.4s;
           margin-top: 0;
           padding: 0.5rem;
           overflow-y: auto;
+          overflow-x: hidden;
+          width: 100%;
 
           .list-group {
             font-size: 0.9rem;
             padding: 0;
             margin: -0.2rem;
+            width: 100%;
 
             .list-group-item {
               padding: 0.3rem;
@@ -86,13 +92,18 @@ $anim-time: 0.4s;
               border-radius: 0.3rem;
               display: grid;
               grid-auto-rows: 1fr;
+              overflow-x: auto;
+
+              &#style-1::-webkit-scrollbar {
+                height: 12px;
+              }
             }
 
             .list-group-item-content {
               display: grid;
-              grid-column-gap: 4px;
-              grid-template-columns: 1.4fr 1fr 0.8fr 1fr;
-            }
+              grid-column-gap: 5px;
+              grid-template-columns: 7rem 1fr 0.8fr max-content;
+              }
           }
 
           hr {
