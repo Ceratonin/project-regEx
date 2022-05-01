@@ -16,6 +16,9 @@ const App = () => {
 
   const [sidebarState, setSidebarState] = useState(false);
 
+  // Мемоизация массива индексов и групп, так как при открытии
+  // сайдбара каждый раз исполнялась функция GetMatchesInfo
+  // Сделано для повышения оптимизации
   const matchInfoObj = useMemo(
     () => GetMatchesInfo(inputText, regExp),
     [inputText, inputReg]

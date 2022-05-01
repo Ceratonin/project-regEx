@@ -7,8 +7,7 @@ const initialText = `RegExr was created by gskinner.com, and is proudly hosted b
   
   The side bar includes a Cheatsheet, full Reference, and Help. You can also Save & Share with the Community, and view patterns you create or favorite in My Patterns.
   
-  Explore results with the Tools below. Replace & List output custom results. Details lists capture groups. Explain describes your expression in plain English.
-  `;
+  Explore results with the Tools below. Replace & List output custom results. Details lists capture groups. Explain describes your expression in plain English.`;
 
 const Input = () => {
   const [inputText, setInputText] = useState(initialText);

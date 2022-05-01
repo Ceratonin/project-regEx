@@ -12,10 +12,9 @@ const flags = [
   { fullName: "sticky", char: "y", charID: 5 },
 ];
 
-const initialRegExp = `([A-Z])\\w+`;
+const initialRegExp = `([A-Z])\\w+`; // <---------------- Дефолтное значение
 
 const Expression = () => {
-  // const [inputReg, setInputReg] = useState("/");
   const [inputReg, setInputReg] = useState(initialRegExp);
   const [checkedState, setCheckedState] = useState(
     new Array(6).fill(true).fill(false, 1)
@@ -96,7 +95,7 @@ const Expression = () => {
           </span>
 
           <input
-           defaultValue={initialRegExp}    // <---------------------------- HERE
+           defaultValue={initialRegExp}
             onChange={handleChange}
             type="text"
             className="form-control"

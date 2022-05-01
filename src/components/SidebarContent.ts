@@ -1,13 +1,6 @@
 import { useContext } from "react";
 import RegExpContext from "../contexts/RegExpContext";
 
-const SidebarContent = () => {
-  const indexArray = useContext(RegExpContext);
-  let matchAmount: number | string = 0;
-
-  return matchAmount;
-};
-
 export const useMatchContent = () => {
   const { indexes } = useContext(RegExpContext);
 
@@ -37,8 +30,3 @@ export const useMatchContent = () => {
   return "Совпадений не найдено";
 };
 
-export const useMatchArray = () => {
-
-}
-
-export default SidebarContent;

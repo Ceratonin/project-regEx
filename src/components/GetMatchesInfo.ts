@@ -1,5 +1,3 @@
-import { IIndexes, ICaptures } from "../utils/types";
-
 const GetMatchesInfo = (text: string, regExp: RegExp) => {
   let matchesArray: (RegExpMatchArray | null)[];
   const indexes: number[][] = [];
