@@ -5,19 +5,26 @@ export interface IRenderII {
 
 export interface IRenderE {
   renderExpression: JSX.Element;
-  regExp: RegExp | undefined;
+  flag: string;
   inputReg: string;
-}
-
-export interface IIndexes {
-  indexes: Array<Array<number>>;
 }
 
 export interface ICaptures {
   captures: Array<Array<string>>;
 }
 
-export interface IRegExpContext extends IIndexes, ICaptures {}
+export interface IMatchesIndexes {
+  start: number;
+  end: number;
+  highlight: boolean;
+}
+
+export interface IGetMatchesInfo {
+  indexes: Array<IMatchesIndexes>;
+  captures: Array<Array<string>>;
+}
+
+export interface IRegExpContext extends IGetMatchesInfo, ICaptures {}
 
 export interface ISidebarState {
   setSidebarState: Function;

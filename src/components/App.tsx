@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import RegExpContext from "../contexts/RegExpContext";
 import InputTextContext from "../contexts/InputTextContext";
-import GetMatchesInfo from "./GetMatchesInfo";
+import { GetMatchesInfo } from "./GetMatchesInfo";
 import "../styles/styles.scss";
 import Expression from "./Expression";
 import Navbar from "./Navbar";
@@ -12,7 +12,7 @@ import { IRenderII, IRenderE } from "../utils/types";
 
 const App = () => {
   const { renderInputText, inputText }: IRenderII = Input();
-  const { renderExpression, regExp, inputReg }: IRenderE = Expression();
+  const { renderExpression, inputReg, flag }: IRenderE = Expression();
 
   const [sidebarState, setSidebarState] = useState(false);
 
@@ -20,8 +20,8 @@ const App = () => {
   // сайдбара каждый раз исполнялась функция GetMatchesInfo
   // Сделано для повышения оптимизации
   const matchInfoObj = useMemo(
-    () => GetMatchesInfo(inputText, regExp),
-    [inputText, inputReg]
+    () => GetMatchesInfo(inputText, inputReg, flag),
+    [inputText, inputReg, flag]
   );
 
   // const matchInfoObj = GetMatchesInfo(inputText, regExp)

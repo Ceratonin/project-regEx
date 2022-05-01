@@ -73,6 +73,8 @@
     "no-param-reassign": 1,
     "jsx-a11y/anchor-is-valid": 1, 
     "react/no-array-index-key": 1,
-    "prefer-const":1
+    "prefer-const":1,
+    "no-cond-assign":1,
+    "no-use-before-define":1
   }
 }

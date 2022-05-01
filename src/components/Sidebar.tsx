@@ -46,7 +46,7 @@ const Sidebar = ({ sidebarState }: { sidebarState: boolean }) => {
                             <span>{id === 0 ? "Индексы:" : ""}</span>
                             <span>
                               {id === 0
-                                ? `[${indexes[index][0]} - ${indexes[index][1]}]`
+                                ? `[${indexes[index].start} - ${indexes[index].end}]`
                                 : ""}
                             </span>
                           </div>

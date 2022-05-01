@@ -39,26 +39,6 @@ const Expression = () => {
     setCheckedState(checkState);
   };
 
-  // Проверка правильности введеного RegExp, например /(/ выдаст ошибку в консоль и крашнет сайт,
-  // для того, чтобы этого не происходило, используется метод try...catch, внутри которого
-  // находится IIFE функция - функция которая вызывается сразу после своего определения
-  const isRegExp = (value: string | RegExp) => {
-    return (() => {
-      try {
-        RegExp(value);
-        return true;
-      } catch {
-        return false;
-      }
-    })();
-  };
-
-  let regExp = new RegExp("/", "");
-
-  if (isRegExp(inputReg)) {
-    regExp = new RegExp(inputReg, flag);
-  }
-
   useEffect(() => {
     if (inputReg === "") {
       setInputReg("/");
@@ -81,8 +61,8 @@ const Expression = () => {
   };
 
   return {
-    regExp,
     inputReg,
+    flag,
     renderExpression: (
       <section className="expression">
         <div className="input-group">
