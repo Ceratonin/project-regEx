@@ -1,41 +1,50 @@
-import Expression from "./Expression";
-import Navbar from "./Navbar";
-import Output from "./Output";
-import Input from "./Input";
-
-interface IRenderII {
-  renderInputText: JSX.Element;
-  inputText: string;
-}
-
-interface IRenderE {
-  renderExpression: JSX.Element;
-  regExp: RegExp | undefined;
-  inputReg: string;
-}
+import { useState, useMemo } from "react";
+import RegExpContext from "./contexts/RegExpContext";
+import InputTextContext from "./contexts/InputTextContext";
+import GetMatchesInfo from "./components/GetMatchesInfo";
+import "./styles.scss";
+import Expression from "./components/Expression";
+import Navbar from "./components/Navbar";
+import Output from "./components/Output";
+import Input from "./components/Input";
+import Sidebar from "./components/Sidebar";
+import { IRenderII, IRenderE } from "./utils/types";
 
 const App = () => {
   const { renderInputText, inputText }: IRenderII = Input();
   const { renderExpression, regExp, inputReg }: IRenderE = Expression();
 
+  const [sidebarState, setSidebarState] = useState(false);
+
+  // Мемоизация массива индексов и групп, так как при открытии
+  // сайдбара каждый раз исполнялась функция GetMatchesInfo
+  // Сделано для повышения оптимизации
+  const matchInfoObj = useMemo(
+    () => GetMatchesInfo(inputText, regExp),
+    [inputText, inputReg]
+  );
+
+  // const matchInfoObj = GetMatchesInfo(inputText, regExp)
+
   return (
-    <div className="page">
-      <Navbar />
-      <div className="st">
-        {renderExpression}
-        {renderInputText}
-        {inputText ? (
-          <Output
-            regExp={regExp}
-            arrOfMatches={regExp}
-            text={inputText}
-            inputReg={inputReg}
+    <RegExpContext.Provider value={matchInfoObj}>
+      <InputTextContext.Provider value={inputText}>
+        <div className="page">
+          <Navbar
+            sidebarState={sidebarState}
+            setSidebarState={setSidebarState}
           />
-        ) : (
-          <></>
-        )}
-      </div>
-    </div>
+          <div className="st">
+            <div className="outSide">
+              {renderExpression}
+              {renderInputText}
+              <Output />
+            </div>
+            <Sidebar sidebarState={sidebarState} />
+          </div>
+        </div>
+      </InputTextContext.Provider>
+    </RegExpContext.Provider>
   );
 };
 

@@ -1,14 +1,13 @@
 import "../styles/styles.scss";
 import Highlight from "./Highlight";
 
-const Output = ({ text, regExp, inputReg }: any) => {
-
+const Output = () => {
   return (
     <section className="output">
       <p className="mb-1">Вывод:</p>
-      <article id="style-1">
+      <article className="output-block" id="style-1">
         <p className="output-text">
-          <Highlight regExp={regExp} inputReg={inputReg}>{text}</Highlight>
+          <Highlight />
         </p>
       </article>
     </section>
