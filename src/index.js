@@ -1,5 +1,5 @@
 import {createRoot} from "react-dom/client"
-import "./styles/styles123.scss"
+import "./styles/index.scss"
 import App from "./components/App";
 
 const container = document.getElementById("root")

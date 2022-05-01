@@ -1,14 +1,14 @@
 import { useState, useMemo } from "react";
-import RegExpContext from "./contexts/RegExpContext";
-import InputTextContext from "./contexts/InputTextContext";
-import GetMatchesInfo from "./components/GetMatchesInfo";
-import "./styles.scss";
-import Expression from "./components/Expression";
-import Navbar from "./components/Navbar";
-import Output from "./components/Output";
-import Input from "./components/Input";
-import Sidebar from "./components/Sidebar";
-import { IRenderII, IRenderE } from "./utils/types";
+import RegExpContext from "../contexts/RegExpContext";
+import InputTextContext from "../contexts/InputTextContext";
+import GetMatchesInfo from "./GetMatchesInfo";
+import "../styles/styles.scss";
+import Expression from "./Expression";
+import Navbar from "./Navbar";
+import Output from "./Output";
+import Input from "./Input";
+import Sidebar from "./Sidebar";
+import { IRenderII, IRenderE } from "../utils/types";
 
 const App = () => {
   const { renderInputText, inputText }: IRenderII = Input();

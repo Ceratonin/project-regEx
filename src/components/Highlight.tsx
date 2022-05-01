@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import RegExpContext from "../contexts/RegExpContext";
 import InputTextContext from "../contexts/InputTextContext";
-import "./../styles/highlightStyles.scss";
+import "../styles/highlightStyles.scss";
 
 // JSX компонент
 const Highlight = () => {

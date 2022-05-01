@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import RegExpContext from "../contexts/RegExpContext";
-import "./styles.scss";
-import "./Sidebar.scss";
+import "../styles/styles.scss";
+import "../styles/sidebar.scss";
 import { useMatchContent } from "./SidebarContent";
 
 const Sidebar = ({ sidebarState }: { sidebarState: boolean }) => {

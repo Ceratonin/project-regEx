@@ -1,9 +1,14 @@
 @import "~bootstrap/scss/bootstrap";
 
 html,
-body {
+body,
+section {
   height: 100%;
   margin: 0;
+}
+
+body {
+  overflow: hidden;
 }
 
 * {
@@ -14,14 +19,23 @@ body {
   box-sizing: border-box;
 }
 
-:root {
+#root {
   display: grid;
   height: 100%;
 }
 
-.st {
-  height: auto;
-  width: auto;
+.page {
+  height: calc(100vh - 48px);
+}
+
+.st,
+.outSide {
+  height: 100%;
   display: flex;
+  overflow: hidden;
+  width: 100%;
+}
+
+.outSide {
   flex-direction: column;
 }
