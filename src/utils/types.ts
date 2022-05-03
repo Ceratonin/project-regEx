@@ -30,3 +30,25 @@ export interface ISidebarState {
   setSidebarState: Function;
   sidebarState: boolean;
 }
+
+export interface IIsHoverObject {
+  onMouseHover: boolean;
+  index: any;
+  clicked: boolean;
+}
+
+export interface IIsHover {
+  isHover: IIsHoverObject;
+}
+
+export interface ISetIsHover {
+  setIsHover: React.Dispatch<
+    React.SetStateAction<{
+      onMouseHover: boolean;
+      index: number;
+      clicked: boolean;
+    }>
+  >;
+}
+
+export interface IHoverState extends IIsHover, ISetIsHover {}

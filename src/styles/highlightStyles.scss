@@ -1,4 +1,4 @@
-@import "~bootstrap/scss/bootstrap";
+// @import "~bootstrap/scss/bootstrap";
 
 .color-output-1 {
   background-color: rgba(92, 136, 218, 0.6);
@@ -10,5 +10,9 @@
 }
 
 .color-hover-1 {
-  background-color: crimson;
+  background-color: rgb(20, 218, 152);
+  cursor: pointer;
+  border-color: rgb(14, 190, 132);
+  border-width: 3px;
+  border-style: solid;
 }
