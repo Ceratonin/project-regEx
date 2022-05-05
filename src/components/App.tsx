@@ -9,23 +9,19 @@ import Navbar from "./Navbar";
 import Output from "./Output";
 import Input from "./Input";
 import Sidebar from "./Sidebar";
-import { IRenderII, IRenderE, IHoverState } from "../utils/types";
+import { IRenderII, IRenderE } from "../utils/types";
+import useOnMouse from "./useOnMouse";
 
 const App = () => {
   const { renderInputText, inputText }: IRenderII = Input();
   const { renderExpression, inputReg, flag }: IRenderE = Expression();
 
   const [sidebarState, setSidebarState] = useState(false);
-
-  const [isHover, setIsHover] = useState({
-    onMouseHover: false,
-    index: NaN,
-    clicked: false,
-  });
+  const { isHovered, memoizedListeners, mouseClick } = useOnMouse();
 
   const hover = useMemo(() => {
-    return { isHover, setIsHover };
-  }, [isHover]);
+    return { isHovered, memoizedListeners, mouseClick };
+  }, [isHovered]);
 
   // Мемоизация массива индексов и групп, так как при открытии
   // сайдбара каждый раз исполнялась функция GetMatchesInfo

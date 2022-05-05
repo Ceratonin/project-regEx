@@ -32,23 +32,26 @@ export interface ISidebarState {
 }
 
 export interface IIsHoverObject {
-  onMouseHover: boolean;
-  index: any;
-  clicked: boolean;
+  hover: boolean;
+  index: number;
 }
 
 export interface IIsHover {
-  isHover: IIsHoverObject;
+  isHovered: IIsHoverObject;
 }
 
-export interface ISetIsHover {
-  setIsHover: React.Dispatch<
-    React.SetStateAction<{
-      onMouseHover: boolean;
-      index: number;
-      clicked: boolean;
-    }>
-  >;
+export interface IMemoizedListeners {
+  memoizedListeners: {
+    onMouseOver(event: React.MouseEvent<HTMLElement>): void;
+    onMouseOut(): void;
+  };
+}
+export interface IMouseClick {
+  mouseClick: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
-export interface IHoverState extends IIsHover, ISetIsHover {}
+export interface IHoverState
+  extends IIsHover,
+    IMemoizedListeners,
+    IMouseClick {}
+

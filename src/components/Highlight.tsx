@@ -1,42 +1,30 @@
-import { useContext, useEffect, useMemo } from "react";
+import { useContext, useMemo } from "react";
 import RegExpContext from "../contexts/RegExpContext";
 import InputTextContext from "../contexts/InputTextContext";
 import MouseHoverContext from "../contexts/MouseHoverContext";
 import { GetAllChunks } from "./GetMatchesInfo";
 import "../styles/highlightStyles.scss";
+import { IHoverState } from "../utils/types";
 
 const Highlight = () => {
-  const hoverState = useContext(MouseHoverContext);
   const text = useContext(InputTextContext);
   const matchInfoObj = useContext(RegExpContext);
 
-  const { isHover, setIsHover } = hoverState;
+  // const { isHovered, memoizedListeners, mouseClick }:IHoverState =
+  const {isHovered, memoizedListeners, mouseClick} =
+    useContext(MouseHoverContext);
+
   const { indexes } = matchInfoObj;
 
   const allChunks = useMemo(() => {
     return GetAllChunks(indexes, text);
   }, [indexes, text]);
 
-  const mouseEnter = (i: number) => {
-    setIsHover({onMouseHover:true, index:i, clicked:false});
-  };
-
-  const mouseLeave = (i: number) => {
-    setIsHover({onMouseHover:false, index:NaN, clicked:false});
-  };
-
-  const handleClick = (i:number) => {
-    setIsHover({onMouseHover:true, index:i, clicked:true})
-  };
-
-
-  useEffect(() => {
-    console.log(isHover);
-  }, [isHover]);
-
   const checkIsHover = (str: string, i: number) => {
-    return isHover.index === i ? (
-      <span className="color-hover-1">{str}</span>
+    return Number(isHovered.index) === i / 2 ? (
+      <span key={i} className="color-hover-1">
+        {str}
+      </span>
     ) : (
       <span>{str}</span>
     );
@@ -48,13 +36,14 @@ const Highlight = () => {
       {allChunks.map((chunk, i) => {
         const { start, end, highlight } = chunk;
         const str = text.substring(start, end);
+
         return highlight ? (
           <span
-            onClick={() => handleClick(i)}
-            onMouseEnter={() => mouseEnter(i)}
-            onMouseLeave={() => mouseLeave(i)}
             key={i}
+            data-key={i / 2}
             className="color-output-1"
+            {...memoizedListeners}
+            onClick={mouseClick} // --------------------------------------------
           >
             {checkIsHover(str, i)}
           </span>

@@ -107,13 +107,12 @@ export const GetMatchesInfo = (
   return matchInfo;
 };
 
-
 // Функция, возвращающая куски, изначального текста в виде объектов
 // Кусок текста, совпадающий с регуляркой имеет свойство highlight:true
 // А кусок текста, не совпадающий, наоборот false
 // Функция предназначена для будущего использования в подсветке
-export const GetAllChunks = (indexes:IMatchesIndexes[], text:string) => {
-  const allChunks:Array<IMatchesIndexes> = [];
+export const GetAllChunks = (indexes: IMatchesIndexes[], text: string) => {
+  const allChunks: Array<IMatchesIndexes> = [];
 
   const chunkAdd = (start: number, end: number, highlight: boolean) => {
     if (end - start > 0) allChunks.push({ start, end, highlight });
@@ -121,11 +120,11 @@ export const GetAllChunks = (indexes:IMatchesIndexes[], text:string) => {
 
   let lastIndex = 0;
   indexes.forEach((chunk) => {
-    chunkAdd(lastIndex, chunk.start, false)
-    chunkAdd(chunk.start, chunk.end, true)
-    lastIndex = chunk.end
-  })
-  chunkAdd(lastIndex, text.length, false)
+    chunkAdd(lastIndex, chunk.start, false);
+    chunkAdd(chunk.start, chunk.end, true);
+    lastIndex = chunk.end;
+  });
+  chunkAdd(lastIndex, text.length, false);
 
-  return allChunks
+  return allChunks;
 };
