@@ -4,30 +4,39 @@ import InputTextContext from "../contexts/InputTextContext";
 import MouseHoverContext from "../contexts/MouseHoverContext";
 import { GetAllChunks } from "./GetMatchesInfo";
 import "../styles/highlightStyles.scss";
-import { IHoverState } from "../utils/types";
 
 const Highlight = () => {
   const text = useContext(InputTextContext);
   const matchInfoObj = useContext(RegExpContext);
 
-  // const { isHovered, memoizedListeners, mouseClick }:IHoverState =
-  const {isHovered, memoizedListeners, mouseClick} =
+  const { isHovered, memoizedListeners, mouseClick, isClicked, Ref } =
     useContext(MouseHoverContext);
-
   const { indexes } = matchInfoObj;
+
+  const handleClick = () => {
+    if(Ref && Ref.current)
+    Ref.current.scrollIntoView({ behavior:"smooth", block: "center" });
+  };
 
   const allChunks = useMemo(() => {
     return GetAllChunks(indexes, text);
   }, [indexes, text]);
 
   const checkIsHover = (str: string, i: number) => {
-    return Number(isHovered.index) === i / 2 ? (
-      <span key={i} className="color-hover-1">
-        {str}
-      </span>
-    ) : (
-      <span>{str}</span>
-    );
+    if (isClicked.index === i / 2) {
+      return (
+        <span key={i} className="color-clicked-1">
+          {str}
+        </span>
+      );
+    } else if (isHovered.index === i / 2) {
+      return (
+        <span key={i} onClick={handleClick} className="color-hovered-1">
+          {str}
+        </span>
+      );
+    }
+    return <span>{str}</span>;
   };
 
   // Кондишинл рендер, зависящий от того, имеет ли кусок highlight:true
@@ -43,7 +52,7 @@ const Highlight = () => {
             data-key={i / 2}
             className="color-output-1"
             {...memoizedListeners}
-            onClick={mouseClick} // --------------------------------------------
+            onClick={mouseClick}
           >
             {checkIsHover(str, i)}
           </span>

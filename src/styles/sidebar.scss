@@ -28,7 +28,7 @@ $anim-time: 0.4s;
     }
 
     @media (orientation: landscape) {
-      width: $landscape-width;
+      // width: $landscape-width; // <---------------------------------
     }
 
     .sidebar-header {
@@ -53,6 +53,11 @@ $anim-time: 0.4s;
       overflow-y: auto;
       // height: calc(100% - $header-height - 1px);
       width: 100%;
+
+      @media (orientation: landscape) {
+        width: calc($landscape-width - 1vw); // <---------------------------------
+      }
+  
 
       .sidebar-content-block {
         display: flex;

@@ -1,22 +1,47 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import RegExpContext from "../contexts/RegExpContext";
 import "../styles/styles.scss";
 import "../styles/highlightStyles.scss";
 import "../styles/sidebar.scss";
 import { useMatchContent } from "./SidebarContent";
 import MouseHoverContext from "../contexts/MouseHoverContext";
+import { ISidebarState } from "../utils/types";
 
-const Sidebar = ({ sidebarState }: { sidebarState: boolean }) => {
+const Sidebar = ({ sidebarCheck }: ISidebarState) => {
+  const [sidebarState, setSidebarState] = sidebarCheck;
+
   const { indexes, captures } = useContext(RegExpContext);
-  const { isHovered, memoizedListeners } = useContext(MouseHoverContext);
+  const { isHovered, memoizedListeners, isClicked, Ref } =
+    useContext(MouseHoverContext);
 
-  console.log(isHovered.index);
+  const checkIsHover = (group: string, index: number) => {
+    if (isClicked.index === index) {
+      return (
+        <span key={index} className="color-clicked-1">
+          {group}
+        </span>
+      );
+    } else if (isHovered.index === index) {
+      return (
+        <span key={index} ref={Ref} className="color-hovered-1">
+          {group}
+        </span>
+      );
+    }
+    return <span>{group}</span>;
+  };
 
-  const sidebarCheck = sidebarState ? "open" : "close";
+  useEffect(() => {
+    if (isClicked.clicked) {
+      setSidebarState(true);
+    }
+  },[isClicked]);
+  
+  const sidebarShow = sidebarState ? "open" : "close";
 
   return (
-    <div id="sidebar" className={sidebarCheck}>
-      <div id="style-1" className={`sidebar ${sidebarCheck}`}>
+    <div id="sidebar" className={sidebarShow}>
+      <div id="style-1" className={`sidebar ${sidebarShow}`}>
         <div className="sidebar-header">
           <span className="sidebar-header-title">Регулярочки</span>
         </div>
@@ -51,13 +76,7 @@ const Sidebar = ({ sidebarState }: { sidebarState: boolean }) => {
                             <span>
                               {id === 0 ? (
                                 <span {...memoizedListeners} data-key={index}>
-                                  {index === Number(isHovered.index) ? (
-                                    <span className="color-hover-1">
-                                      {group}
-                                    </span>
-                                  ) : (
-                                    <span>{group}</span>
-                                  )}
+                                  {checkIsHover(group, index)}
                                 </span>
                               ) : (
                                 <span>{group}</span>

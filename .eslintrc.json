@@ -25,7 +25,7 @@
   "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
     "jsx-quotes": [1, "prefer-double"],
-    "quotes": ["error", "double", {"allowTemplateLiterals":true}],
+    "quotes": ["error", "double", { "allowTemplateLiterals": true }],
     "import/no-unresolved": "off",
     "import/extensions": [
       "error",
@@ -48,33 +48,40 @@
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "arrow-body-style": ["off", "as-needed"],
     "import/prefer-default-export": "off",
-    "react/self-closing-comp": ["warn", {
-      "component": true,
-      "html": true
-    }],
-    "jsx-a11y/label-has-associated-control": ["error", {
-      "required": {
-        "some": ["nesting", "id"]
+    "react/self-closing-comp": [
+      "warn",
+      {
+        "component": true,
+        "html": true
       }
-    }],
+    ],
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        "required": {
+          "some": ["nesting", "id"]
+        }
+      }
+    ],
     "react/destructuring-assignment": "off",
     "react/prop-types": "off",
     "lines-between-class-members": "off",
     "consistent-return": "off",
     "import/namespace": "off",
     "import/default": "off",
-    "eqeqeq":["warn", "always", {"null": "ignore"}],
-    "jsx-a11y/no-static-element-interactions":"off",
-    "jsx-a11y/click-events-have-key-events":"off",
-    "no-undef":"off",
+    "eqeqeq": ["warn", "always", { "null": "ignore" }],
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "no-undef": "off",
     "react/function-component-definition": "off",
     "prefer-regex-literals": "off",
     "react/jsx-no-useless-fragment": "off",
     "no-param-reassign": 1,
-    "jsx-a11y/anchor-is-valid": 1, 
+    "jsx-a11y/anchor-is-valid": 1,
     "react/no-array-index-key": 1,
-    "prefer-const":1,
-    "no-cond-assign":1,
-    "no-use-before-define":1
+    "prefer-const": 1,
+    "no-cond-assign": 1,
+    "no-use-before-define": 1,
+    "no-else-return": [1, { "allowElseIf": true }]
   }
 }

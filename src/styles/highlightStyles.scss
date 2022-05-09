@@ -9,10 +9,18 @@
   color: rgba(23, 105, 255, 0.9);
 }
 
-.color-hover-1 {
+.color-hovered-1 {
   background-color: rgb(20, 218, 152);
   cursor: pointer;
   border-color: rgb(14, 190, 132);
-  border-width: 3px;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.color-clicked-1 {
+  background-color: rgb(226, 162, 110);
+  cursor: pointer;
+  border-color: rgb(182, 101, 35);
+  border-width: 2px;
   border-style: solid;
 }

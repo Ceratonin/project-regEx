@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
 import RegExpContext from "../contexts/RegExpContext";
 import InputTextContext from "../contexts/InputTextContext";
 import MouseHoverContext from "../contexts/MouseHoverContext";
@@ -10,18 +10,26 @@ import Output from "./Output";
 import Input from "./Input";
 import Sidebar from "./Sidebar";
 import { IRenderII, IRenderE } from "../utils/types";
-import useOnMouse from "./useOnMouse";
+import useOnMouse from "./hooks/useOnMouse";
 
 const App = () => {
   const { renderInputText, inputText }: IRenderII = Input();
   const { renderExpression, inputReg, flag }: IRenderE = Expression();
 
-  const [sidebarState, setSidebarState] = useState(false);
-  const { isHovered, memoizedListeners, mouseClick } = useOnMouse();
+  const sidebarCheck = useState(false);
+  const { isHovered, memoizedListeners, mouseClick, isClicked } = useOnMouse();
+
+  const Ref = useRef<null | HTMLSpanElement>(null);
 
   const hover = useMemo(() => {
-    return { isHovered, memoizedListeners, mouseClick };
-  }, [isHovered]);
+    return {
+      isHovered,
+      memoizedListeners,
+      mouseClick,
+      isClicked,
+      Ref,
+    };
+  }, [isHovered, isClicked, Ref]);
 
   // Мемоизация массива индексов и групп, так как при открытии
   // сайдбара каждый раз исполнялась функция GetMatchesInfo
@@ -37,8 +45,7 @@ const App = () => {
         <MouseHoverContext.Provider value={hover}>
           <div className="page">
             <Navbar
-              sidebarState={sidebarState}
-              setSidebarState={setSidebarState}
+              sidebarCheck={sidebarCheck}
             />
             <div className="st">
               <div className="outSide">
@@ -46,7 +53,7 @@ const App = () => {
                 {renderInputText}
                 <Output />
               </div>
-              <Sidebar sidebarState={sidebarState} />
+              <Sidebar sidebarCheck={sidebarCheck} />
             </div>
           </div>
         </MouseHoverContext.Provider>

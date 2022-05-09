@@ -1,7 +1,9 @@
 import "../styles/styles.scss";
 import { ISidebarState } from "../utils/types";
 
-const Navbar = ({ setSidebarState, sidebarState }: ISidebarState) => {
+const Navbar = ({ sidebarCheck }: ISidebarState) => {
+  const [sidebarState, setSidebarState] = sidebarCheck
+
   const handleClick = () => {
     setSidebarState(!sidebarState);
   };

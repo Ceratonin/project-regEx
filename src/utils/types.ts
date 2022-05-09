@@ -26,18 +26,19 @@ export interface IGetMatchesInfo {
 
 export interface IRegExpContext extends IGetMatchesInfo, ICaptures {}
 
-export interface ISidebarState {
-  setSidebarState: Function;
-  sidebarState: boolean;
-}
-
-export interface IIsHoverObject {
-  hover: boolean;
-  index: number;
+export interface ISidebarState{
+  sidebarCheck: [boolean, React.Dispatch<React.SetStateAction<boolean>>]
 }
 
 export interface IIsHover {
-  isHovered: IIsHoverObject;
+  isHovered: { hover: boolean; index: number };
+}
+
+export interface IIsClicked {
+  isClicked: {
+    clicked: boolean;
+    index: number;
+  };
 }
 
 export interface IMemoizedListeners {
@@ -53,5 +54,7 @@ export interface IMouseClick {
 export interface IHoverState
   extends IIsHover,
     IMemoizedListeners,
-    IMouseClick {}
-
+    IMouseClick,
+    IIsClicked {
+  Ref: React.MutableRefObject<HTMLSpanElement | null>;
+}
