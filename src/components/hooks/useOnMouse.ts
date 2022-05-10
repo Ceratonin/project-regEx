@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from "react";
 
-const useOnMouse = () => {
+const useOnMouse: any = () => {
   const [isHovered, setIsHovered] = useState({ hover: false, index: -1 });
   const [isClicked, setIsClicked] = useState({ clicked: false, index: -1 });
 

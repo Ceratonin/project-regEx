@@ -19,15 +19,20 @@ export interface IMatchesIndexes {
   highlight: boolean;
 }
 
+export interface IMatchesGroups {
+  [key: string | number]: string | number;
+}
+
 export interface IGetMatchesInfo {
   indexes: Array<IMatchesIndexes>;
   captures: Array<Array<string>>;
+  groups: Array<IMatchesGroups>;
 }
 
 export interface IRegExpContext extends IGetMatchesInfo, ICaptures {}
 
-export interface ISidebarState{
-  sidebarCheck: [boolean, React.Dispatch<React.SetStateAction<boolean>>]
+export interface ISidebarState {
+  sidebarCheck: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
 }
 
 export interface IIsHover {

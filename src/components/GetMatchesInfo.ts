@@ -1,4 +1,8 @@
-import { IGetMatchesInfo, IMatchesIndexes } from "../utils/types";
+import {
+  IGetMatchesInfo,
+  IMatchesGroups,
+  IMatchesIndexes,
+} from "../utils/types";
 
 // Функция, превращающая введенную строку в полноценное регулярное выражение
 export const regExpCreate = (inputReg: string, flag: string) => {
@@ -36,10 +40,12 @@ export const GetMatchesInfo = (
 ): IGetMatchesInfo => {
   const captures: string[][] = [];
   const indexes: Array<IMatchesIndexes> = [];
+  const groups: Array<IMatchesGroups> = [];
   let matchesArray = [];
   let matchInfo = {
     indexes,
     captures,
+    groups,
   };
 
   const cap: string[] = [];
@@ -73,6 +79,8 @@ export const GetMatchesInfo = (
           });
 
           captures[i] = [...cap];
+
+          if (elem.groups) groups[i] = elem.groups;
         }
       });
   } else {
@@ -95,6 +103,8 @@ export const GetMatchesInfo = (
         });
 
         captures[i] = [...cap];
+
+        if (elem.groups) groups[i] = elem.groups;
       }
     });
   }
@@ -102,6 +112,7 @@ export const GetMatchesInfo = (
   matchInfo = {
     indexes,
     captures,
+    groups,
   };
 
   return matchInfo;

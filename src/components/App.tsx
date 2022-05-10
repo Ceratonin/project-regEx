@@ -16,7 +16,7 @@ const App = () => {
   const { renderInputText, inputText }: IRenderII = Input();
   const { renderExpression, inputReg, flag }: IRenderE = Expression();
 
-  const sidebarCheck = useState(false);
+  const sidebarCheck = useState(true);
   const { isHovered, memoizedListeners, mouseClick, isClicked } = useOnMouse();
 
   const Ref = useRef<null | HTMLSpanElement>(null);
@@ -29,7 +29,7 @@ const App = () => {
       isClicked,
       Ref,
     };
-  }, [isHovered, isClicked, Ref]);
+  }, [isHovered, isClicked, Ref, memoizedListeners, mouseClick]);
 
   // Мемоизация массива индексов и групп, так как при открытии
   // сайдбара каждый раз исполнялась функция GetMatchesInfo
@@ -44,9 +44,7 @@ const App = () => {
       <InputTextContext.Provider value={inputText}>
         <MouseHoverContext.Provider value={hover}>
           <div className="page">
-            <Navbar
-              sidebarCheck={sidebarCheck}
-            />
+            <Navbar sidebarCheck={sidebarCheck} />
             <div className="st">
               <div className="outSide">
                 {renderExpression}

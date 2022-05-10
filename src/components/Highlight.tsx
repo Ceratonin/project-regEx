@@ -12,7 +12,7 @@ const Highlight = () => {
   const { isHovered, memoizedListeners, mouseClick, isClicked, Ref } =
     useContext(MouseHoverContext);
   const { indexes } = matchInfoObj;
-
+  
   const handleClick = () => {
     if(Ref && Ref.current)
     Ref.current.scrollIntoView({ behavior:"smooth", block: "center" });
@@ -22,7 +22,7 @@ const Highlight = () => {
     return GetAllChunks(indexes, text);
   }, [indexes, text]);
 
-  const checkIsHover = (str: string, i: number) => {
+  const checkIsHover = (str: string, i: number) => {  
     if (isClicked.index === i / 2) {
       return (
         <span key={i} className="color-clicked-1">

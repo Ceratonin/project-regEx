@@ -12,7 +12,7 @@ const flags = [
   { fullName: "sticky", char: "y", charID: 5 },
 ];
 
-const initialRegExp = `([A-Z])\\w+`; // <---------------- Дефолтное значение
+const initialRegExp = `(?<letters>[A-Z])(?<word>\\w+)`; // <---------------- Дефолтное значение
 
 const Expression = () => {
   const [inputReg, setInputReg] = useState(initialRegExp);

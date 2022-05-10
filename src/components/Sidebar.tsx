@@ -1,16 +1,16 @@
-import { useContext, useEffect } from "react";
+import { useCallback, useContext, useEffect } from "react";
 import RegExpContext from "../contexts/RegExpContext";
 import "../styles/styles.scss";
 import "../styles/highlightStyles.scss";
 import "../styles/sidebar.scss";
-import { useMatchContent } from "./SidebarContent";
+import { useAmountLetter } from "./hooks/SidebarContent";
 import MouseHoverContext from "../contexts/MouseHoverContext";
 import { ISidebarState } from "../utils/types";
 
 const Sidebar = ({ sidebarCheck }: ISidebarState) => {
   const [sidebarState, setSidebarState] = sidebarCheck;
 
-  const { indexes, captures } = useContext(RegExpContext);
+  const { indexes, captures, groups } = useContext(RegExpContext);
   const { isHovered, memoizedListeners, isClicked, Ref } =
     useContext(MouseHoverContext);
 
@@ -31,12 +31,31 @@ const Sidebar = ({ sidebarCheck }: ISidebarState) => {
     return <span>{group}</span>;
   };
 
+  const matchGroupName = (group: string, id: number, index: number) => {
+    let groupName = "";
+
+    if (id === 0) groupName = `Совпадение-${index + 1}`;
+    else groupName = `Группа-${id}`;
+
+    Object.keys(groups[index]).map((elemKey) => {
+      if (
+        groups[index][elemKey] !== undefined &&
+        groups[index][elemKey] === group
+      )
+        groupName = `Группа-${elemKey}`;
+
+      return groupName;
+    });
+
+    return groupName;
+  };
+
   useEffect(() => {
     if (isClicked.clicked) {
       setSidebarState(true);
     }
-  },[isClicked]);
-  
+  }, [isClicked]);
+
   const sidebarShow = sidebarState ? "open" : "close";
 
   return (
@@ -52,7 +71,7 @@ const Sidebar = ({ sidebarCheck }: ISidebarState) => {
             <span>Совпадения</span>
             <div className="sidebar-content-area">
               <span className="sidebar-content-match-amount">
-                {useMatchContent()}
+                {useAmountLetter()}
               </span>
               <hr />
               <ul className="list-group py-1">
@@ -64,14 +83,12 @@ const Sidebar = ({ sidebarCheck }: ISidebarState) => {
                       key={index}
                     >
                       {value.map((group, id) => {
-                        let groupName = "";
-                        if (id === 0) groupName = `Совпадение-${index + 1}`;
-                        else groupName = `Группа-${id}`;
-
                         return (
                           <div className="list-group-item-content" key={id}>
                             <span>
-                              <div className="inside">{groupName}</div>
+                              <div className="inside">
+                                {matchGroupName(group, id, index)}
+                              </div>
                             </span>
                             <span>
                               {id === 0 ? (
