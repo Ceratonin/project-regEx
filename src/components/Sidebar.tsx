@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import RegExpContext from "../contexts/RegExpContext";
 import "../styles/styles.scss";
 import "../styles/highlightStyles.scss";
@@ -37,15 +37,16 @@ const Sidebar = ({ sidebarCheck }: ISidebarState) => {
     if (id === 0) groupName = `Совпадение-${index + 1}`;
     else groupName = `Группа-${id}`;
 
-    Object.keys(groups[index]).map((elemKey) => {
-      if (
-        groups[index][elemKey] !== undefined &&
-        groups[index][elemKey] === group
-      )
-        groupName = `Группа-${elemKey}`;
+    if (groups && groups[index])
+      Object.keys(groups[index]).map((elemKey) => {
+        if (
+          groups[index][elemKey] !== undefined &&
+          groups[index][elemKey] === group
+        )
+          groupName = `Группа-${elemKey}`;
 
-      return groupName;
-    });
+        return groupName;
+      });
 
     return groupName;
   };

@@ -12,6 +12,7 @@ import Sidebar from "./Sidebar";
 import { IRenderII, IRenderE } from "../utils/types";
 import useOnMouse from "./hooks/useOnMouse";
 
+
 const App = () => {
   const { renderInputText, inputText }: IRenderII = Input();
   const { renderExpression, inputReg, flag }: IRenderE = Expression();

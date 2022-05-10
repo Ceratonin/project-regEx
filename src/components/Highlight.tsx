@@ -1,4 +1,5 @@
 import { useContext, useMemo } from "react";
+import Tooltip from "@mui/material/Tooltip";
 import RegExpContext from "../contexts/RegExpContext";
 import InputTextContext from "../contexts/InputTextContext";
 import MouseHoverContext from "../contexts/MouseHoverContext";
@@ -12,17 +13,17 @@ const Highlight = () => {
   const { isHovered, memoizedListeners, mouseClick, isClicked, Ref } =
     useContext(MouseHoverContext);
   const { indexes } = matchInfoObj;
-  
+
   const handleClick = () => {
-    if(Ref && Ref.current)
-    Ref.current.scrollIntoView({ behavior:"smooth", block: "center" });
+    if (Ref && Ref.current)
+      Ref.current.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
   const allChunks = useMemo(() => {
     return GetAllChunks(indexes, text);
   }, [indexes, text]);
 
-  const checkIsHover = (str: string, i: number) => {  
+  const checkIsHover = (str: string, i: number) => {
     if (isClicked.index === i / 2) {
       return (
         <span key={i} className="color-clicked-1">
@@ -30,10 +31,26 @@ const Highlight = () => {
         </span>
       );
     } else if (isHovered.index === i / 2) {
+      const ind = indexes[i / 2];
       return (
-        <span key={i} onClick={handleClick} className="color-hovered-1">
-          {str}
-        </span>
+        <Tooltip
+          componentsProps={{
+            tooltip: {
+              sx: {
+                color: "white",
+                background: "linear-gradient(220deg, #52b3ff 30%, #5b87eb 90%)",
+                fontSize: "1em",
+              },
+            },
+          }}
+          title={`[${ind.start} - ${ind.end}]`}
+          placement="top"
+          arrow
+        >
+          <span key={i} onClick={handleClick} className="color-hovered-1">
+            {str}
+          </span>
+        </Tooltip>
       );
     }
     return <span>{str}</span>;
