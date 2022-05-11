@@ -82,6 +82,7 @@
     "prefer-const": 1,
     "no-cond-assign": 1,
     "no-use-before-define": 1,
-    "no-else-return": [1, { "allowElseIf": true }]
+    "no-else-return": [1, { "allowElseIf": true }],
+    "react/no-unused-prop-types": 1
   }
 }

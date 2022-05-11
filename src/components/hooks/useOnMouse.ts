@@ -10,6 +10,7 @@ const useOnMouse: any = () => {
     setIsClicked({ clicked: true, index: key });
   }, []);
 
+  // Мемоизованные значения для работы с мышью
   const memoizedListeners = useMemo(
     () => ({
       onMouseOver(event: React.MouseEvent<HTMLElement>) {

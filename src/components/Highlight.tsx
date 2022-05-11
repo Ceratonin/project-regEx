@@ -23,6 +23,7 @@ const Highlight = () => {
     return GetAllChunks(indexes, text);
   }, [indexes, text]);
 
+  // Подсветка при навеении
   const checkIsHover = (str: string, i: number) => {
     if (isClicked.index === i / 2) {
       return (

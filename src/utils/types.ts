@@ -63,3 +63,19 @@ export interface IHoverState
     IIsClicked {
   Ref: React.MutableRefObject<HTMLSpanElement | null>;
 }
+
+export interface ITab {
+  tabTitle: string;
+  children: JSX.Element;
+}
+
+export interface ITabs {
+  children: JSX.Element[];
+}
+
+export interface ITabTitle {
+  tabTitle: string;
+  setTabTitle: React.Dispatch<React.SetStateAction<number>>;
+  index: number;
+  tabTitleState: number;
+}

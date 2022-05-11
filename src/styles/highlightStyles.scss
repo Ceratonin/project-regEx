@@ -11,6 +11,7 @@
 
 .color-hovered-1 {
   background-color: rgb(20, 218, 152);
+  background: linear-gradient(45deg, #14da98 30%, #59f3ab 90%);
   cursor: pointer;
   border-color: rgb(14, 190, 132);
   border-width: 2px;
@@ -18,7 +19,7 @@
 }
 
 .color-clicked-1 {
-  background-color: rgb(226, 162, 110);
+  background: linear-gradient(45deg, #fe6b8b 30%, #ff8e53 90%);
   cursor: pointer;
   border-color: rgb(182, 101, 35);
   border-width: 2px;

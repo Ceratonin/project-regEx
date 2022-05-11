@@ -31,6 +31,9 @@ const Sidebar = ({ sidebarCheck }: ISidebarState) => {
     return <span>{group}</span>;
   };
 
+  // Функция, определяющая название группы, и если в регулярном выражении
+  // есть именованная группа, то название группы включает в себя её название,
+  // иначе же пишется просто номер группы захвата
   const matchGroupName = (group: string, id: number, index: number) => {
     let groupName = "";
 
