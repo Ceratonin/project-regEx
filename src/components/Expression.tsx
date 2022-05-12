@@ -75,7 +75,7 @@ const Expression = () => {
           </span>
 
           <input
-           defaultValue={initialRegExp}
+            defaultValue={initialRegExp}
             onChange={handleChange}
             type="text"
             className="form-control"

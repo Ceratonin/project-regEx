@@ -1,6 +1,6 @@
 import { useContext, useMemo } from "react";
 import Tooltip from "@mui/material/Tooltip";
-import RegExpContext from "../contexts/RegExpContext";
+import MatchInfoObjContext from "../contexts/MatchInfoObjContext";
 import InputTextContext from "../contexts/InputTextContext";
 import MouseHoverContext from "../contexts/MouseHoverContext";
 import { GetAllChunks } from "./GetMatchesInfo";
@@ -8,7 +8,7 @@ import "../styles/highlightStyles.scss";
 
 const Highlight = () => {
   const text = useContext(InputTextContext);
-  const matchInfoObj = useContext(RegExpContext);
+  const matchInfoObj = useContext(MatchInfoObjContext);
 
   const { isHovered, memoizedListeners, mouseClick, isClicked, Ref } =
     useContext(MouseHoverContext);

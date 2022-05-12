@@ -1,8 +1,9 @@
 import { useState, useMemo, useRef } from "react";
-import RegExpContext from "../contexts/RegExpContext";
+import MatchInfoObjContext from "../contexts/MatchInfoObjContext";
 import InputTextContext from "../contexts/InputTextContext";
 import MouseHoverContext from "../contexts/MouseHoverContext";
-import { GetMatchesInfo } from "./GetMatchesInfo";
+import regExpressionContext from "../contexts/regExpressionContext";
+import { GetMatchesInfo, regExpCreate } from "./GetMatchesInfo";
 import Expression from "./Expression";
 import Navbar from "./Navbar";
 import Output from "./Output";
@@ -33,6 +34,8 @@ const App = () => {
     };
   }, [isHovered, isClicked, Ref, memoizedListeners, mouseClick]);
 
+  const regExpression = regExpCreate(inputReg, flag);
+
   // Мемоизация массива индексов и групп, так как при открытии
   // сайдбара каждый раз исполнялась функция GetMatchesInfo
   // Сделано для повышения оптимизации
@@ -42,30 +45,32 @@ const App = () => {
   );
 
   return (
-    <RegExpContext.Provider value={matchInfoObj}>
+    <MatchInfoObjContext.Provider value={matchInfoObj}>
       <InputTextContext.Provider value={inputText}>
         <MouseHoverContext.Provider value={hover}>
-          <div className="page">
-            <Navbar sidebarCheck={sidebarCheck} />
-            <div className="st">
-              <div className="outSide">
-                {renderExpression}
-                {renderInputText}
-                <Tabs>
-                  <Tab tabTitle="Совпадения">
-                    <Output />
-                  </Tab>
-                  <Tab tabTitle="Замена">
-                    <Output />
-                  </Tab>
-                </Tabs>
+          <regExpressionContext.Provider value={regExpression}>
+            <div className="page">
+              <Navbar sidebarCheck={sidebarCheck} />
+              <div className="st">
+                <div className="outSide">
+                  {renderExpression}
+                  {renderInputText}
+                  <Tabs>
+                    <Tab tabtitle="Совпадения">
+                      <Output tabItem="Highlight" />
+                    </Tab>
+                    <Tab tabtitle="Замена">
+                      <Output tabItem="Replace" />
+                    </Tab>
+                  </Tabs>
+                </div>
+                <Sidebar sidebarCheck={sidebarCheck} />
               </div>
-              <Sidebar sidebarCheck={sidebarCheck} />
             </div>
-          </div>
+          </regExpressionContext.Provider>
         </MouseHoverContext.Provider>
       </InputTextContext.Provider>
-    </RegExpContext.Provider>
+    </MatchInfoObjContext.Provider>
   );
 };
 

@@ -21,7 +21,8 @@ const Input = () => {
       <section className="input">
         <div className="form-label">Текст:</div>
         <textarea
-          id="style-1"
+          rows={4}
+          id="scroll"
           value={inputText}
           onChange={handleChange}
           className="form-control input-text"

@@ -35,7 +35,7 @@ const Tabs = ({ children }: ITabs) => {
             <TabTitle
               key={index}
               index={index}
-              tabTitle={elem.props.tabTitle}
+              tabTitle={elem.props.tabtitle}
               setTabTitle={setTabTitleState}
               tabTitleState={tabTitleState}
             />

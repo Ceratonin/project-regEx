@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react";
-import RegExpContext from "../contexts/RegExpContext";
+import RegExpContext from "../contexts/MatchInfoObjContext";
 import "../styles/styles.scss";
 import "../styles/highlightStyles.scss";
 import "../styles/sidebar.scss";
@@ -64,13 +64,13 @@ const Sidebar = ({ sidebarCheck }: ISidebarState) => {
 
   return (
     <div id="sidebar" className={sidebarShow}>
-      <div id="style-1" className={`sidebar ${sidebarShow}`}>
+      <div id="scroll" className={`sidebar ${sidebarShow}`}>
         <div className="sidebar-header">
           <span className="sidebar-header-title">Регулярочки</span>
         </div>
         <hr />
 
-        <div className="sidebar-content" id="style-1">
+        <div className="sidebar-content" id="scroll">
           <div className="sidebar-content-block first">
             <span>Совпадения</span>
             <div className="sidebar-content-area">
@@ -83,7 +83,7 @@ const Sidebar = ({ sidebarCheck }: ISidebarState) => {
                   return (
                     <li
                       className="list-group-item my-1"
-                      id="style-1"
+                      id="scroll"
                       key={index}
                     >
                       {value.map((group, id) => {

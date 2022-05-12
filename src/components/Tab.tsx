@@ -2,12 +2,12 @@ import { ITab } from "../utils/types";
 
 declare module "react" {
   interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
-    tabTitle?: string;
+    tabtitle?: string;
   }
 }
 
-const Tab = ({ children, tabTitle }: ITab) => {
-  return <div className="tab-block" tabTitle={tabTitle}>{children}</div>;
+const Tab = ({ children, tabtitle }: ITab) => {
+  return <div className="tab-block" tabtitle={tabtitle}>{children}</div>;
 };
 
 export default Tab;

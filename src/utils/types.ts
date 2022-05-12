@@ -29,7 +29,7 @@ export interface IGetMatchesInfo {
   groups: Array<IMatchesGroups>;
 }
 
-export interface IRegExpContext extends IGetMatchesInfo, ICaptures {}
+export interface IMatchInfoObjContext extends IGetMatchesInfo, ICaptures {}
 
 export interface ISidebarState {
   sidebarCheck: [boolean, React.Dispatch<React.SetStateAction<boolean>>];
@@ -65,7 +65,7 @@ export interface IHoverState
 }
 
 export interface ITab {
-  tabTitle: string;
+  tabtitle: string;
   children: JSX.Element;
 }
 
@@ -78,4 +78,8 @@ export interface ITabTitle {
   setTabTitle: React.Dispatch<React.SetStateAction<number>>;
   index: number;
   tabTitleState: number;
+}
+
+export interface ITabItem {
+  tabItem:string
 }
