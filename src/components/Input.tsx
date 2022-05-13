@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "../styles/styles.scss";
 
-const initialText = `RegExr was created by gskinner.com, and is proudly hosted by Media Temple.
+const initialText = `RegExr was created by Ceratonin, bootstrapped on create-react-app.
 
-Edit the Expression & Text to see matches. Roll over matches or the expression for details. PCRE & JavaScript flavors of RegEx are supported. Validate your expression with Tests mode.
+Edit the Expression & Text to see matches. Hover over matches to see their indexes. Regular Expression engine is provided by JavaScript.
   
-The side bar includes a Cheatsheet, full Reference, and Help. You can also Save & Share with the Community, and view patterns you create or favorite in My Patterns.
+The side bar includes an index list. If regExp has capturing groups, they, and their names(if they exist on regExp) also will be displayed there.
   
-Explore results with the Tools below. Replace & List output custom results. Details lists capture groups. Explain describes your expression in plain English.`;
+Below input Text there are few Tools. Matches & Replace output custom results. Matches shows text with highlighted matches. With replace you can Replace matched words with something else.`;
 
 const Input = () => {
   const [inputText, setInputText] = useState(initialText);

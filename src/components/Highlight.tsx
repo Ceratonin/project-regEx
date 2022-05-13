@@ -46,6 +46,7 @@ const Highlight = () => {
           }}
           title={`[${ind.start} - ${ind.end}]`}
           placement="top"
+          disableInteractive
           arrow
         >
           <span key={i} onClick={handleClick} className="color-hovered-1">
