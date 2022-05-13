@@ -1,6 +1,6 @@
 import { useContext, useMemo } from "react";
 import Tooltip from "@mui/material/Tooltip";
-import MatchInfoObjContext from "../contexts/MatchInfoObjContext";
+import MatchInfoArrContext from "../contexts/MatchInfoArrContext";
 import InputTextContext from "../contexts/InputTextContext";
 import MouseHoverContext from "../contexts/MouseHoverContext";
 import { GetAllChunks } from "./GetMatchesInfo";
@@ -8,11 +8,10 @@ import "../styles/highlightStyles.scss";
 
 const Highlight = () => {
   const text = useContext(InputTextContext);
-  const matchInfoObj = useContext(MatchInfoObjContext);
+  const matchInfoArr = useContext(MatchInfoArrContext);
 
   const { isHovered, memoizedListeners, mouseClick, isClicked, Ref } =
     useContext(MouseHoverContext);
-  const { indexes } = matchInfoObj;
 
   const handleClick = () => {
     if (Ref && Ref.current)
@@ -20,10 +19,10 @@ const Highlight = () => {
   };
 
   const allChunks = useMemo(() => {
-    return GetAllChunks(indexes, text);
-  }, [indexes, text]);
+    return GetAllChunks(matchInfoArr, text);
+  }, [matchInfoArr, text]);
 
-  // Подсветка при навеении
+  // Подсветка при наведении
   const checkIsHover = (str: string, i: number) => {
     if (isClicked.index === i / 2) {
       return (
@@ -32,7 +31,8 @@ const Highlight = () => {
         </span>
       );
     } else if (isHovered.index === i / 2) {
-      const ind = indexes[i / 2];
+      // const ind = indexes[i / 2];
+      const ind = matchInfoArr[i / 2].indexes;
       return (
         <Tooltip
           componentsProps={{

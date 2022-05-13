@@ -1,51 +1,53 @@
 import { useContext, useEffect } from "react";
-import RegExpContext from "../contexts/MatchInfoObjContext";
+import RegExpContext from "../contexts/MatchInfoArrContext";
 import "../styles/styles.scss";
 import "../styles/highlightStyles.scss";
 import "../styles/sidebar.scss";
 import { useAmountLetter } from "./hooks/SidebarContent";
 import MouseHoverContext from "../contexts/MouseHoverContext";
-import { ISidebarState } from "../utils/types";
+import { IGetMatchesInfo, IMatchesGroups, ISidebarState } from "../utils/types";
 
 const Sidebar = ({ sidebarCheck }: ISidebarState) => {
   const [sidebarState, setSidebarState] = sidebarCheck;
 
-  const { indexes, captures, groups } = useContext(RegExpContext);
+  const matchInfoArr = useContext(RegExpContext);
   const { isHovered, memoizedListeners, isClicked, Ref } =
-    useContext(MouseHoverContext);
-
-  const checkIsHover = (group: string, index: number) => {
+  useContext(MouseHoverContext);
+  
+  const checkIsHover = (capturedGroup: string, index: number) => {
     if (isClicked.index === index) {
       return (
         <span key={index} className="color-clicked-1">
-          {group}
+          {capturedGroup}
         </span>
       );
     } else if (isHovered.index === index) {
       return (
         <span key={index} ref={Ref} className="color-hovered-1">
-          {group}
+          {capturedGroup}
         </span>
       );
     }
-    return <span>{group}</span>;
+    return <span>{capturedGroup}</span>;
   };
 
   // Функция, определяющая название группы, и если в регулярном выражении
   // есть именованная группа, то название группы включает в себя её название,
   // иначе же пишется просто номер группы захвата
-  const matchGroupName = (group: string, id: number, index: number) => {
+  const matchGroupName = (
+    capturedGroup: string,
+    groups: IMatchesGroups,
+    id: number,
+    index: number
+  ) => {
     let groupName = "";
 
     if (id === 0) groupName = `Совпадение-${index + 1}`;
     else groupName = `Группа-${id}`;
 
-    if (groups && groups[index])
-      Object.keys(groups[index]).map((elemKey) => {
-        if (
-          groups[index][elemKey] !== undefined &&
-          groups[index][elemKey] === group
-        )
+    if (groups)
+      Object.keys(groups).map((elemKey) => {
+        if (groups[elemKey] !== undefined && groups[elemKey] === capturedGroup)
           groupName = `Группа-${elemKey}`;
 
         return groupName;
@@ -79,36 +81,38 @@ const Sidebar = ({ sidebarCheck }: ISidebarState) => {
               </span>
               <hr />
               <ul className="list-group py-1">
-                {captures.map((value, index) => {
+                {matchInfoArr.map((value: IGetMatchesInfo, index: number) => {
+                  const { start, end } = value.indexes;
                   return (
                     <li
                       className="list-group-item my-1"
                       id="scroll"
                       key={index}
                     >
-                      {value.map((group, id) => {
+                      {value.captures.map((capturedGroup, id) => {
                         return (
                           <div className="list-group-item-content" key={id}>
                             <span>
                               <div className="inside">
-                                {matchGroupName(group, id, index)}
+                                {matchGroupName(
+                                  capturedGroup,
+                                  value.groups,
+                                  id,
+                                  index
+                                )}
                               </div>
                             </span>
                             <span>
                               {id === 0 ? (
                                 <span {...memoizedListeners} data-key={index}>
-                                  {checkIsHover(group, index)}
+                                  {checkIsHover(capturedGroup, index)}
                                 </span>
                               ) : (
-                                <span>{group}</span>
+                                <span>{capturedGroup}</span>
                               )}
                             </span>
                             <span>{id === 0 ? "Индексы:" : ""}</span>
-                            <span>
-                              {id === 0
-                                ? `[${indexes[index].start} - ${indexes[index].end}]`
-                                : ""}
-                            </span>
+                            <span>{id === 0 ? `[${start} - ${end}]` : ""}</span>
                           </div>
                         );
                       })}

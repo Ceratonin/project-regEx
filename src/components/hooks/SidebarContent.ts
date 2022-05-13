@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import RegExpContext from "../../contexts/MatchInfoObjContext";
+import RegExpContext from "../../contexts/MatchInfoArrContext";
 
 export const useAmountLetter = () => {
-  const { indexes } = useContext(RegExpContext);
+  const matchInfoArr = useContext(RegExpContext);
 
-  const amount = indexes.length.toString();
+  const amount = matchInfoArr.length.toString();
   const regExpLetter = amount.match(/[1]?[0-9]$/);
   let letter;
 
@@ -29,4 +29,3 @@ export const useAmountLetter = () => {
   }
   return "Совпадений не найдено";
 };
-

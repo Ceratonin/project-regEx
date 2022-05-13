@@ -24,12 +24,12 @@ export interface IMatchesGroups {
 }
 
 export interface IGetMatchesInfo {
-  indexes: Array<IMatchesIndexes>;
-  captures: Array<Array<string>>;
-  groups: Array<IMatchesGroups>;
+  indexes: IMatchesIndexes;
+  captures: Array<string>;
+  groups: IMatchesGroups;
 }
 
-export interface IMatchInfoObjContext extends IGetMatchesInfo, ICaptures {}
+export interface MatchInfoArrContext extends IGetMatchesInfo {}
 
 export interface ISidebarState {
   sidebarCheck: [boolean, React.Dispatch<React.SetStateAction<boolean>>];

@@ -28,25 +28,32 @@ export const regExpCreate = (inputReg: string, flag: string) => {
   return regExp;
 };
 
-// Функция, возвращающая объект из массивов indexes и captures
+// Функция, возвращающая массив из обхектов типа {indexes, captures, groups}
 // Каждый элемент indexes представляет собой объект, состоящий из
 // первого индекса совпадения, последнего, а также информации о том,
 // надо ли этот элемент подсвечивать. Captures состоит из массивов, где
-// каждый элемент это массив, содержащий информацию о скобочных группах
+// каждый элемент это массив, содержащий информацию о скобочных группах.
+// А groups - содержит в себе именованные групппы захвата, если такие есть
 export const GetMatchesInfo = (
   text: string,
   inputReg: string,
   flag: string
 ): IGetMatchesInfo => {
-  const captures: string[][] = [];
-  const indexes: Array<IMatchesIndexes> = [];
-  const groups: Array<IMatchesGroups> = [];
+  let captures: string[] = [];
+  let indexes: IMatchesIndexes = {
+    start: -1,
+    end: -1,
+    highlight: false,
+  };
+  let groups: IMatchesGroups = {};
   let matchesArray = [];
   let matchInfo = {
     indexes,
     captures,
     groups,
   };
+
+  const matchesInfoArray: any = [];
 
   const cap: string[] = [];
   let start;
@@ -63,12 +70,12 @@ export const GetMatchesInfo = (
 
     const test = regExp.exec(text);
     if (test)
-      matchesArray.forEach((elem, i) => {
+      matchesArray.forEach((elem) => {
         if (elem && elem.index !== undefined) {
           start = elem.index;
           end = test[0].length - 1;
 
-          indexes[i] = {
+          indexes = {
             start,
             end,
             highlight: true,
@@ -78,9 +85,17 @@ export const GetMatchesInfo = (
             cap[j] = key;
           });
 
-          captures[i] = [...cap];
+          captures = [...cap];
 
-          if (elem.groups) groups[i] = elem.groups;
+          if (elem.groups) groups = elem.groups;
+
+          matchInfo = {
+            indexes,
+            captures,
+            groups,
+          };
+
+          matchesInfoArray.push(matchInfo);
         }
       });
   } else {
@@ -92,7 +107,7 @@ export const GetMatchesInfo = (
         start = elem.index;
         end = regExp.lastIndex;
 
-        indexes[i] = {
+        indexes = {
           start,
           end,
           highlight: true,
@@ -102,38 +117,42 @@ export const GetMatchesInfo = (
           cap[j] = key;
         });
 
-        captures[i] = [...cap];
+        captures = [...cap];
 
-        if (elem.groups) groups[i] = elem.groups;
+        if (elem.groups) groups = elem.groups;
+
+        matchInfo = {
+          indexes,
+          captures,
+          groups,
+        };
+
+        matchesInfoArray.push(matchInfo);
       }
     });
   }
 
-  matchInfo = {
-    indexes,
-    captures,
-    groups,
-  };
-
-  return matchInfo;
+  return matchesInfoArray;
 };
 
 // Функция, возвращающая куски, изначального текста в виде объектов
 // Кусок текста, совпадающий с регуляркой имеет свойство highlight:true
 // А кусок текста, не совпадающий, наоборот false
 // Функция предназначена для будущего использования в подсветке
-export const GetAllChunks = (indexes: IMatchesIndexes[], text: string) => {
-  const allChunks: Array<IMatchesIndexes> = [];
+export const GetAllChunks = (matchInfoArr: IGetMatchesInfo[], text: string) => {
+  const allChunks: IMatchesIndexes[] = [];
 
   const chunkAdd = (start: number, end: number, highlight: boolean) => {
     if (end - start > 0) allChunks.push({ start, end, highlight });
   };
 
   let lastIndex = 0;
-  indexes.forEach((chunk) => {
-    chunkAdd(lastIndex, chunk.start, false);
-    chunkAdd(chunk.start, chunk.end, true);
-    lastIndex = chunk.end;
+  matchInfoArr.forEach((chunk) => {
+    const { start, end } = chunk.indexes;
+
+    chunkAdd(lastIndex, start, false);
+    chunkAdd(start, end, true);
+    lastIndex = end;
   });
   chunkAdd(lastIndex, text.length, false);
 

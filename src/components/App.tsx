@@ -1,5 +1,5 @@
 import { useState, useMemo, useRef } from "react";
-import MatchInfoObjContext from "../contexts/MatchInfoObjContext";
+import MatchInfoArrContext from "../contexts/MatchInfoArrContext";
 import InputTextContext from "../contexts/InputTextContext";
 import MouseHoverContext from "../contexts/MouseHoverContext";
 import regExpressionContext from "../contexts/regExpressionContext";
@@ -39,13 +39,13 @@ const App = () => {
   // Мемоизация массива индексов и групп, так как при открытии
   // сайдбара каждый раз исполнялась функция GetMatchesInfo
   // Сделано для повышения оптимизации
-  const matchInfoObj = useMemo(
+  const matchInfoArr = useMemo(
     () => GetMatchesInfo(inputText, inputReg, flag),
     [inputText, inputReg, flag]
   );
 
   return (
-    <MatchInfoObjContext.Provider value={matchInfoObj}>
+    <MatchInfoArrContext.Provider value={matchInfoArr}>
       <InputTextContext.Provider value={inputText}>
         <MouseHoverContext.Provider value={hover}>
           <regExpressionContext.Provider value={regExpression}>
@@ -70,7 +70,7 @@ const App = () => {
           </regExpressionContext.Provider>
         </MouseHoverContext.Provider>
       </InputTextContext.Provider>
-    </MatchInfoObjContext.Provider>
+    </MatchInfoArrContext.Provider>
   );
 };
 
