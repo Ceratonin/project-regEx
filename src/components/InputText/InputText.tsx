@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "../styles/styles.scss";
+import "../../styles/common.scss"
+import "./inputText.scss";
 
 const initialText = `RegExr was created by Ceratonin, bootstrapped on create-react-app.
 

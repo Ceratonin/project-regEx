@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/js/bootstrap.bundle";
-import "../styles/styles.scss";
-import "../styles/highlightStyles.scss";
+import "../../styles/common.scss"
+import "./expression.scss";
 
 const flags = [
   { fullName: "global", char: "g", charID: 0 },

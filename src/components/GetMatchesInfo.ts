@@ -158,3 +158,5 @@ export const GetAllChunks = (matchInfoArr: IGetMatchesInfo[], text: string) => {
 
   return allChunks;
 };
+
+export default GetAllChunks

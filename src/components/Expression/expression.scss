@@ -1,0 +1,41 @@
+.expression {
+  flex: 0 0 3.4em;
+
+  .input-group {
+    z-index: 0;
+    box-shadow: -2px 2px 8px rgb(0 0 0 / 20%);
+
+    .btn {
+      &.btn-info {
+        background-color: rgb(7, 185, 221);
+        color: white;
+        box-shadow: -2px 2px 8px rgb(0 0 0 / 10%);
+      }
+
+      &:focus {
+        box-shadow: none !important;
+        box-shadow: 2px 2px 8px rgb(13 110 253 / 50%) !important;
+      }
+    }
+
+    .dropdown-menu {
+      min-width: 4rem;
+      padding: 0.5rem;
+
+      .form-check .form-check-input,
+      .form-check-label {
+        cursor: pointer;
+      }
+
+      .form-check-label {
+        width: 100%;
+        user-select: none;
+      }
+    }
+  }
+}
+
+.color-flag-1 {
+  font-weight: bold;
+  color: rgba(23, 105, 255, 0.9);
+}

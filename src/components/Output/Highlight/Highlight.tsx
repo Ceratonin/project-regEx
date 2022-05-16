@@ -1,10 +1,10 @@
 import { useContext, useMemo } from "react";
 import Tooltip from "@mui/material/Tooltip";
-import MatchInfoArrContext from "../contexts/MatchInfoArrContext";
-import InputTextContext from "../contexts/InputTextContext";
-import MouseHoverContext from "../contexts/MouseHoverContext";
-import { GetAllChunks } from "./GetMatchesInfo";
-import "../styles/highlightStyles.scss";
+import MatchInfoArrContext from "../../../contexts/MatchInfoArrContext";
+import InputTextContext from "../../../contexts/InputTextContext";
+import MouseHoverContext from "../../../contexts/MouseHoverContext";
+import { GetAllChunks } from "../../GetMatchesInfo";
+import "./highlight.scss";
 
 const Highlight = () => {
   const text = useContext(InputTextContext);

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import RegExpContext from "../../contexts/MatchInfoArrContext";
+import RegExpContext from "../contexts/MatchInfoArrContext";
 
 export const useAmountLetter = () => {
   const matchInfoArr = useContext(RegExpContext);

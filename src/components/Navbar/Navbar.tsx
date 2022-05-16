@@ -1,5 +1,5 @@
-import "../styles/styles.scss";
-import { ISidebarState } from "../utils/types";
+import { ISidebarState } from "../../utils/types";
+import "./navbar.scss";
 
 const Navbar = ({ sidebarCheck }: ISidebarState) => {
   const [sidebarState, setSidebarState] = sidebarCheck

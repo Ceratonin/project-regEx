@@ -1,0 +1,38 @@
+.replace {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .input-wrap {
+    position: relative;
+
+    .fa-circle-info {
+      font-size: 1.4rem;
+      color: rgb(16, 155, 201);
+      position: absolute;
+      padding: 10px;
+      right: 0px;
+      top: -4%;
+    }
+
+    .replace-input {
+      box-shadow: -2px 2px 8px rgb(0 0 0 / 20%);
+      padding-right: 30px;
+    }
+  }
+
+  .replace-block {
+    overflow-y: auto;
+    box-shadow: -2px 2px 8px rgb(0 0 0 / 20%);
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    height: 100%;
+    background: linear-gradient(
+      30deg,
+      rgb(199, 199, 199) 30%,
+      rgb(223 223 223) 90%
+    );
+    background-color: crimson;
+    padding: 0.5rem 0.5rem;
+  }
+}

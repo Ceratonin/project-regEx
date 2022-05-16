@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import Tooltip from "@mui/material/Tooltip";
-import regExpressionContext from "../contexts/regExpressionContext";
-import InputTextContext from "../contexts/InputTextContext";
+import regExpressionContext from "../../../contexts/regExpressionContext";
+import InputTextContext from "../../../contexts/InputTextContext";
+import "./replace.scss"
 
 const initialValue = "Albert";
 

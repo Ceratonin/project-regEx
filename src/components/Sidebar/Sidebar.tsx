@@ -1,11 +1,10 @@
 import { useContext, useEffect } from "react";
-import RegExpContext from "../contexts/MatchInfoArrContext";
-import "../styles/styles.scss";
-import "../styles/highlightStyles.scss";
-import "../styles/sidebar.scss";
-import { useAmountLetter } from "./hooks/SidebarContent";
-import MouseHoverContext from "../contexts/MouseHoverContext";
-import { IGetMatchesInfo, IMatchesGroups, ISidebarState } from "../utils/types";
+import RegExpContext from "../../contexts/MatchInfoArrContext";
+import { useAmountLetter } from "../../hooks/SidebarContent";
+import MouseHoverContext from "../../contexts/MouseHoverContext";
+import { IGetMatchesInfo, IMatchesGroups, ISidebarState } from "../../utils/types";
+import "../../styles/common.scss"
+import "./sidebar.scss";
 
 const Sidebar = ({ sidebarCheck }: ISidebarState) => {
   const [sidebarState, setSidebarState] = sidebarCheck;

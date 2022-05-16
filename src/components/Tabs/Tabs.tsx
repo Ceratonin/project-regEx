@@ -1,5 +1,7 @@
 import { useCallback, useState } from "react";
-import { ITabs, ITabTitle } from "../utils/types";
+import { ITabs, ITabTitle } from "../../utils/types";
+import "../../styles/common.scss";
+import "./tabs.scss";
 
 const TabTitle = ({
   tabTitle,

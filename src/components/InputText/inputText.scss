@@ -1,0 +1,13 @@
+textarea {
+  background-color: crimson;
+  height: 35vh;
+  max-height: 50vh;
+  min-height: 20vh;
+  box-shadow: -2px 2px 8px rgb(0 0 0 / 20%);
+  border-radius: 0.5rem !important;
+
+  &.input-text {
+    font-family: "Roboto", "sans-serif";
+    min-height: 15vh;
+  }
+}

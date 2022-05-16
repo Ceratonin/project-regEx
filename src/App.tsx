@@ -1,19 +1,18 @@
 import { useState, useMemo, useRef } from "react";
-import MatchInfoArrContext from "../contexts/MatchInfoArrContext";
-import InputTextContext from "../contexts/InputTextContext";
-import MouseHoverContext from "../contexts/MouseHoverContext";
-import regExpressionContext from "../contexts/regExpressionContext";
-import { GetMatchesInfo, regExpCreate } from "./GetMatchesInfo";
-import Expression from "./Expression";
-import Navbar from "./Navbar";
-import Output from "./Output";
-import Input from "./Input";
-import Sidebar from "./Sidebar";
-import Tabs from "./Tabs";
-import Tab from "./Tab";
-import "../styles/styles.scss";
+import MatchInfoArrContext from "./contexts/MatchInfoArrContext";
+import InputTextContext from "./contexts/InputTextContext";
+import MouseHoverContext from "./contexts/MouseHoverContext";
+import regExpressionContext from "./contexts/regExpressionContext";
+import { GetMatchesInfo, regExpCreate } from "./components/GetMatchesInfo";
+import Expression from "./components/Expression/Expression";
+import Navbar from "./components/Navbar/Navbar";
+import Output from "./components/Output/Output";
+import Input from "./components/InputText/InputText";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Tabs from "./components/Tabs/Tabs";
+import Tab from "./components/Tabs/Tab";
 import useOnMouse from "./hooks/useOnMouse";
-import { IRenderII, IRenderE } from "../utils/types";
+import { IRenderII, IRenderE } from "./utils/types";
 
 const App = () => {
   const { renderInputText, inputText }: IRenderII = Input();
